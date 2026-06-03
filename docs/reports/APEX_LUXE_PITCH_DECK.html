@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX LUXE — Pitch Deck & Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background: #0b0b0b;
+      --surface: #121212;
+      --surface-variant: #1a1a1a;
+      --border: #262626;
+      --primary: #d4ff3f; /* Neon Lime */
+      --primary-hover: #bce628;
+      --foreground: #f4f4f0;
+      --on-surface-variant: #8a8a8a;
+      --glass: rgba(18, 18, 18, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.05);
+      --font-display: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--background);
+      color: var(--foreground);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+
+    /* Grid/Glow Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .bg-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 255, 63, 0.05) 0%, rgba(212, 255, 63, 0) 70%);
+      top: -10%;
+      right: -10%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .bg-glow-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(212, 255, 63, 0.03) 0%, rgba(212, 255, 63, 0) 75%);
+      bottom: -10%;
+      left: -10%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Top Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--surface-variant);
+      z-index: 100;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(212, 255, 63, 0.8);
+      transition: width 0.3s cubic-bezier(0.1, 0.8, 0.25, 1);
+    }
+
+    /* Presentation Area */
+    .deck-container {
+      flex: 1;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      max-width: 1200px;
+      height: 80%;
+      max-height: 700px;
+      opacity: 0;
+      transform: scale(0.98) translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      pointer-events: auto;
+      z-index: 20;
+    }
+
+    /* Typography & Utilities */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    p {
+      color: var(--on-surface-variant);
+      line-height: 1.6;
+    }
+
+    .accent-text {
+      color: var(--primary);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .mono-badge {
+      font-family: var(--font-mono);
+      background: rgba(212, 255, 63, 0.1);
+      border: 1px solid rgba(212, 255, 63, 0.2);
+      color: var(--primary);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      display: inline-block;
+      width: fit-content;
+    }
+
+    .slide-header {
+      margin-bottom: 2rem;
+    }
+
+    .slide-header h2 {
+      font-size: 2.5rem;
+      letter-spacing: -1px;
+      text-transform: uppercase;
+    }
+
+    .slide-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--on-surface-variant);
+    }
+
+    .slide-footer .logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-footer .logo span {
+      color: var(--primary);
+    }
+
+    /* Grid Layouts for Content */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+    }
+
+    /* Glass Cards */
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(212, 255, 63, 0.2);
+    }
+
+    .glass-card.highlight {
+      border: 1px solid rgba(212, 255, 63, 0.3);
+    }
+
+    .glass-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .glass-card h3 span {
+      color: var(--primary);
+    }
+
+    .glass-card p {
+      font-size: 0.9rem;
+    }
+
+    /* Specific Slide Styles */
+    /* Cover Slide */
+    .slide-cover {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+
+    .slide-cover h1 {
+      font-size: 6rem;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #fff 30%, var(--on-surface-variant) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .slide-cover h1::after {
+      content: 'APEX';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 6rem;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(212, 255, 63, 0.08);
+      z-index: -1;
+    }
+
+    .slide-cover .subtitle {
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--foreground);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-cover .tagline {
+      font-size: 1.1rem;
+      color: var(--primary);
+      font-family: var(--font-mono);
+      letter-spacing: 1px;
+    }
+
+    /* List styling */
+    ul.check-list {
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--on-surface-variant);
+    }
+
+    ul.check-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    ul.check-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Controls */
+    .controls {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .control-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #fff;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      outline: none;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      background: var(--surface-variant);
+      border-color: var(--primary);
+      color: var(--primary);
+      box-shadow: 0 0 10px rgba(212, 255, 63, 0.2);
+    }
+
+    .control-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .slide-counter {
+      position: fixed;
+      bottom: 2.75rem;
+      left: 2rem;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      z-index: 100;
+    }
+
+    .slide-counter span {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Big Metric Styles */
+    .metric-container {
+      text-align: center;
+    }
+
+    .metric-value {
+      font-size: 4rem;
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .metric-value span {
+      color: var(--primary);
+    }
+
+    .metric-label {
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--on-surface-variant);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Custom Design System Previews */
+    .ds-color-bar {
+      display: flex;
+      height: 60px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+    }
+
+    .ds-color {
+      flex: 1;
+      height: 100%;
+      position: relative;
+    }
+
+    .ds-color::after {
+      content: attr(data-hex);
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2px 4px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    /* Architecture visual flows */
+    .arch-flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .arch-step {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .arch-step-badge {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .arch-step-label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .arch-step-desc {
+      font-size: 0.75rem;
+      color: var(--on-surface-variant);
+      margin-left: auto;
+    }
+
+    /* Timeline diagram */
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      width: 100%;
+      margin: 2rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--border);
+      z-index: 1;
+    }
+
+    .timeline-node {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 14%;
+    }
+
+    .timeline-circle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 2px solid var(--border);
+      color: var(--on-surface-variant);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+
+    .timeline-node.active .timeline-circle {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: #000;
+      box-shadow: 0 0 15px var(--primary);
+    }
+
+    .timeline-node.completed .timeline-circle {
+      border-color: var(--primary);
+      background: var(--surface);
+      color: var(--primary);
+    }
+
+    .timeline-phase {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--on-surface-variant);
+      margin-top: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .timeline-title {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 0.25rem;
+    }
+
+    /* RTL Arabic preview styling */
+    .rtl-preview {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Cairo', var(--font-sans);
+    }
+
+    .rtl-preview h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .rtl-preview p {
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="bg-glow-2"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Slide Counter -->
+  <div class="slide-counter">
+    SLIDE <span id="currentNum">1</span> / <span id="totalNum">18</span>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="control-btn" id="prevBtn" onclick="navigate(-1)" disabled aria-label="Previous Slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+    </button>
+    <button class="control-btn" id="nextBtn" onclick="navigate(1)" aria-label="Next Slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+    </button>
+  </div>
+
+  <!-- Presentation Deck -->
+  <div class="deck-container">
+
+    <!-- SLIDE 1: Cover -->
+    <div class="slide active slide-cover">
+      <div>
+        <span class="accent-text">Enterprise Pitch & Case Study</span>
+        <h1>APEX LUXE</h1>
+        <p class="subtitle">AI-Powered Multi-Tenant Commerce Ecosystem</p>
+        <p class="tagline">The Future of AI Commerce, SaaS Retail & Intelligent Shopping</p>
+      </div>
+      <div style="margin-top: 3rem; font-size: 0.9rem; font-family: var(--font-mono); color: var(--on-surface-variant);">
+        Hussein Ahmed &bull; June 2026
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Project Overview -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Pillar Definitions</span>
+        <h2>Project Overview</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div style="padding-right: 1rem;">
+            <p style="font-size: 1.15rem; color: #fff; margin-bottom: 1.5rem; font-weight: 300;">
+              APEX LUXE is a next-generation luxury sportswear commerce ecosystem combining enterprise scaling, contextual AI intelligence, and multi-tenant isolation.
+            </p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">
+              It establishes a unified codebase that powers completely isolated brand storefronts (SaaS), aggregates vendor products (Marketplace), and curates hyper-personalized clothing recommendations (AI Stylist).
+            </p>
+          </div>
+          <div class="grid-2" style="grid-template-columns: 1fr; gap: 1rem;">
+            <div class="glass-card" style="padding: 1rem;">
+              <h3><span>01.</span> Intelligent Commerce</h3>
+              <p>Generative AI features powering conversational wardrobe planning and catalog indexing.</p>
+            </div>
+            <div class="glass-card" style="padding: 1rem;">
+              <h3><span>02.</span> Enterprise Multi-Tenant SaaS</h3>
+              <p>Strict data segregation and dynamic theme customization under dedicated subdomains.</p>
+            </div>
+            <div class="glass-card" style="padding: 1rem;">
+              <h3><span>03.</span> Integrated Marketplace</h3>
+              <p>Split warehouse routing and automated vendor payout logic via Stripe Connect.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Overview & Vision</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Problem Statement -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Market Friction</span>
+        <h2>Problem Statement</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <span class="accent-text" style="color: #ff5252;">01 / Personalization</span>
+            <h3 style="margin-top: 0.5rem;">Flat Catalogs</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Standard systems rely on static category grids and simple tag filtering. They fail to understand style aesthetics, visual matching compatibility, or dynamic user conversational requests.</p>
+          </div>
+          <div class="glass-card">
+            <span class="accent-text" style="color: #ff5252;">02 / Architecture</span>
+            <h3 style="margin-top: 0.5rem;">Tenant Leakage</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Multi-tenant database deployments are highly vulnerable to cross-tenant data leaks. Requiring developers to explicitly scope every query increases the surface area for bugs.</p>
+          </div>
+          <div class="glass-card">
+            <span class="accent-text" style="color: #ff5252;">03 / Operations</span>
+            <h3 style="margin-top: 0.5rem;">Marketplace Split</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">Managing split shipping, routing orders across distributed vendor warehouses, calculating custom platform fees, and executing Connect payouts remains complex and error-prone.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>The Problem</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Solution -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Technically Superior Commerce</span>
+        <h2>The Solution</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="glass-card highlight">
+            <span class="mono-badge">AI Stylist</span>
+            <h3 style="margin-top: 1rem;">Contextual Wardrobe Engine</h3>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+              Customers upload outfit images. The vision engine extracts aesthetics, indexes item profiles, calculates compatibility scores, and offers an interactive chat to complete their look.
+            </p>
+            <ul class="check-list" style="margin-top: 1rem; font-size: 0.85rem;">
+              <li>Visual style extraction & scoring</li>
+              <li>Natural language recommendation chat</li>
+            </ul>
+          </div>
+          <div class="grid-2" style="grid-template-columns: 1fr; gap: 1rem;">
+            <div class="glass-card" style="padding: 1rem;">
+              <h3 style="font-size: 1.1rem;">Automatic Tenant Interceptor</h3>
+              <p style="font-size: 0.8rem;">Prisma query extensions intercept all calls and automatically append tenant scope. Pre-flight checks abort cross-tenant unique upserts.</p>
+            </div>
+            <div class="glass-card" style="padding: 1rem;">
+              <h3 style="font-size: 1.1rem;">Stripe Connect & Split Routing</h3>
+              <p style="font-size: 0.8rem;">Decoupled webhook listeners verify transactions, create sub-orders, calculate commissions, and execute vendor payments automatically.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>The Solution</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Platform Architecture -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Core Infrastructure Stack</span>
+        <h2>Platform Architecture</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-4">
+          <div class="glass-card" style="padding: 1rem;">
+            <span class="accent-text">Frontend</span>
+            <h3 style="font-size: 1.1rem; margin-top: 0.25rem;">Next.js 15</h3>
+            <ul class="check-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+              <li>App Router</li>
+              <li>TypeScript</li>
+              <li>TailwindCSS</li>
+              <li>Zustand State</li>
+              <li>TanStack Query</li>
+            </ul>
+          </div>
+          <div class="glass-card" style="padding: 1rem;">
+            <span class="accent-text">Backend</span>
+            <h3 style="font-size: 1.1rem; margin-top: 0.25rem;">NestJS 11</h3>
+            <ul class="check-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+              <li>Enterprise Scope</li>
+              <li>Prisma Client</li>
+              <li>MS SQL Server</li>
+              <li>class-validator</li>
+              <li>Raw query hooks</li>
+            </ul>
+          </div>
+          <div class="glass-card" style="padding: 1rem;">
+            <span class="accent-text">Infrastructure</span>
+            <h3 style="font-size: 1.1rem; margin-top: 0.25rem;">Redis / SDK</h3>
+            <ul class="check-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+              <li>BullMQ Workers</li>
+              <li>Stripe Connect</li>
+              <li>Resend Mail</li>
+              <li>Cloudinary CDN</li>
+              <li>Firebase PWA</li>
+            </ul>
+          </div>
+          <div class="glass-card" style="padding: 1rem;">
+            <span class="accent-text">AI Layer</span>
+            <h3 style="font-size: 1.1rem; margin-top: 0.25rem;">Groq Engine</h3>
+            <ul class="check-list" style="margin-top: 0.5rem; font-size: 0.8rem;">
+              <li>Llama 3 70B</li>
+              <li>Vision Adapter</li>
+              <li>Vector Search</li>
+              <li>Compatibility scoring</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Architecture & Tech Stack</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: UI/UX Design System -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Premium Minimalist Aesthetics</span>
+        <h2>UI/UX Design System</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div>
+            <span class="mono-badge" style="margin-bottom: 0.5rem;">Color Tokens</span>
+            <div class="ds-color-bar">
+              <div class="ds-color" style="background: #0b0b0b;" data-hex="#0B0B0B"></div>
+              <div class="ds-color" style="background: #121212;" data-hex="#121212"></div>
+              <div class="ds-color" style="background: #1a1a1a;" data-hex="#1A1A1A"></div>
+              <div class="ds-color" style="background: #d4ff3f;" data-hex="#D4FF3F"></div>
+              <div class="ds-color" style="background: #f4f4f0;" data-hex="#F4F4F0"></div>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Typography System</h3>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">
+              Display: <strong>Cabinet Grotesk / Space Grotesk</strong> (High contrast, geometric)<br>
+              Body: <strong>Inter / Geist</strong> (Optimized UI readability, neutral tracking)
+            </p>
+          </div>
+          <div class="glass-card rtl-preview">
+            <span class="accent-text" style="margin-bottom: 0.5rem;">Arabic RTL Support</span>
+            <h4>مظهر رياضي فاخر ومخصص</h4>
+            <p style="margin-bottom: 0.75rem; line-height: 1.5;">تم تصميم المنصة بالكامل لتدعم واجهات اتجاه اليمين إلى اليسار بشكل انسيابي، مع تعديل اتجاه المحاذاة والخطوط (Cairo) بناءً على تفضيلات اللغة المختارة.</p>
+            <div style="display: flex; gap: 0.5rem; justify-content: flex-start;">
+              <span class="mono-badge" style="background: rgba(255,255,255,0.05); color: #fff; border-color: var(--border);">دعم RTL كامل</span>
+              <span class="mono-badge">نشط</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Design System</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: AI Systems -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Generative Intelligence Hub</span>
+        <h2>AI Systems</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <h3><span>01 /</span> Stylist Vision</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Analyzes uploaded outfit photos, extracts specific aesthetic categories (e.g. Minimalist Techwear), lists features, and computes compatibility scores with the catalog.</p>
+          </div>
+          <div class="glass-card">
+            <h3><span>02 /</span> Vector Search</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Implements semantic embeddings for product catalogs, enabling similarity matching and fallback searches without requiring high-latency external LLM roundtrips.</p>
+          </div>
+          <div class="glass-card">
+            <h3><span>03 /</span> Auto-Tagging</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Scans new catalog uploads and automatically generates stylistic classifications, sensory descriptors, suggested use cases, and fits for search indexing.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>AI & Deep Learning</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Commerce Features -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">End-to-End Retail Operations</span>
+        <h2>Commerce Features</h2>
+      </div>
+      <div class="slide-body">
+        <div class="arch-flow">
+          <div class="arch-step">
+            <div class="arch-step-badge">1</div>
+            <div class="arch-step-label">Catalog & Inventory Management</div>
+            <div class="arch-step-desc">Strict inventory allocation checking across multi-warehouse configurations.</div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-step-badge">2</div>
+            <div class="arch-step-label">Stripe Elements Checkout</div>
+            <div class="arch-step-desc">Embedded custom Stripe form routing, calculating regional taxes and delivery fees.</div>
+          </div>
+          <div class="arch-step">
+            <div class="arch-step-badge">3</div>
+            <div class="arch-step-label">Real-Time Event Tracking</div>
+            <div class="arch-step-desc">Tracking lifecycle timeline (Placed, Processing, Shipped, Delivered) using QR code receipts.</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Core Commerce Engine</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Retention Ecosystem -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">LTV Optimization Engine</span>
+        <h2>Retention Ecosystem</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <div class="accent-text">Loyalty Tiering</div>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Automated point calculation matching currency values, supporting tier progressions (Bronze, Silver, Gold, Platinum) and reward redemptions.</p>
+          </div>
+          <div class="glass-card">
+            <div class="accent-text">Referral System</div>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Generates encrypted customer referral codes, tracking successful conversions and awarding promotion coupons to both referrer and invitee.</p>
+          </div>
+          <div class="glass-card">
+            <div class="accent-text">BullMQ Cart Recovery</div>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Background worker loops monitor cart updates. Inactivity triggers high-conversion, AI-curated mail alerts through Resend integration.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Retention & Marketing</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Global Commerce -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Border-Free Sales Logistics</span>
+        <h2>Global Commerce</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="glass-card">
+            <h3><span>USD / EUR / EGP / AED / SAR</span></h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+              APEX LUXE houses dynamic base currency conversion. Regional rates and settings are synchronized automatically, allowing customers to view localized prices, pay with custom currencies, and execute split tax calculations.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h3>Multi-Warehouse Routing</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+              When orders are verified, fulfillment nodes check stock levels across distributed regional warehouses. Orders containing items from multiple vendors are split into independent delivery threads with individual tracking configurations.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Global Infrastructure</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Marketplace -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Multi-Vendor Platform</span>
+        <h2>Marketplace Ecosystem</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <h3>Connect Onboarding</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Vendors complete identity verification via Stripe Express OAuth, automatically linking accounts to collect payouts securely.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Commission Engine</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Platform dynamically extracts platform fees and calculates net vendor earnings before initiating transfers, mitigating operational debt.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Vendor Dashboard</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Dedicated portal for inventory tracking, order dispatch forms, tracking registrations, and historical Connect payouts logs.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Marketplace Architecture</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: Multi-Tenant SaaS -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Enterprise B2B Scaling</span>
+        <h2>Multi-Tenant SaaS</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-2">
+          <div class="glass-card highlight">
+            <h3>Tenant Query Isolation</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+              Data isolation is implemented via global Prisma client query extensions. The middleware intercepts database calls, extracting the tenant domain from `AsyncLocalStorage` request headers and automatically scoping database reads, writes, and updates.
+            </p>
+          </div>
+          <div class="glass-card">
+            <h3>Dynamic Branding Engine</h3>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.6;">
+              Tenant profiles define custom CSS classes, color values (primary, secondary, background), localized dictionary defaults, and domain routing. Storefront layouts adapt on the fly, rendering unique styles with zero code modifications.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Multi-Tenant Architecture</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: Engineering Challenges -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Production Hardening Case Study</span>
+        <h2>Engineering Challenges</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <h3>Hydration Mismatch</h3>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Browser extension injection (e.g. `trancy-version`) mutated layouts before React completed rendering, causing client/server mismatch. Suppressed warnings on `html` and isolated dynamic attributes within client lifecycle hooks.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Secure Upsert Scopes</h3>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Prisma upsert constraints did not allow appending non-unique variables like `tenantId`. Built an asynchronous pre-flight client interceptor that queries the target record and blocks the execution if it belongs to another tenant.</p>
+          </div>
+          <div class="glass-card">
+            <h3>Stripe Element State</h3>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem;">Client-side trust models were vulnerable to payload modifications. Rebuilt payment flows using cryptographic Stripe Webhook validation, linking transitions directly to verified webhook events inside BullMQ workers.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Challenges Solved</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: Performance & Security -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Scalable System Gates</span>
+        <h2>Performance & Security</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="metric-container glass-card">
+            <div class="metric-value">0<span>ms</span></div>
+            <div class="metric-label">Cache Retrieval Latency</div>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--on-surface-variant);">Redis caching scales read operations, offloading query demands from SQL Server during high-traffic catalog requests.</p>
+          </div>
+          <div class="metric-container glass-card">
+            <div class="metric-value">100<span>%</span></div>
+            <div class="metric-label">Secure Tenant Isolation</div>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--on-surface-variant);">AsyncLocalStorage binds query operations with active domain scopes, preventing cross-tenant data leaks.</p>
+          </div>
+          <div class="metric-container glass-card">
+            <div class="metric-value">256<span>-bit</span></div>
+            <div class="metric-label">Token Cookie Security</div>
+            <p style="font-size: 0.75rem; margin-top: 0.5rem; color: var(--on-surface-variant);">Authentication tokens are secured via cryptographically signed double cookies configured as httpOnly, Secure, and SameSite.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Security & Metrics</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: Project Evolution -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Development Timeline</span>
+        <h2>Project Evolution</h2>
+      </div>
+      <div class="slide-body" style="flex-direction: column; justify-content: center;">
+        <div class="timeline">
+          <div class="timeline-node completed">
+            <div class="timeline-circle">A</div>
+            <div class="timeline-phase">Phase A</div>
+            <div class="timeline-title">Foundation</div>
+          </div>
+          <div class="timeline-node completed">
+            <div class="timeline-circle">C</div>
+            <div class="timeline-phase">Phase C</div>
+            <div class="timeline-title">Experience Pl.</div>
+          </div>
+          <div class="timeline-node completed">
+            <div class="timeline-circle">F</div>
+            <div class="timeline-phase">Phase F</div>
+            <div class="timeline-title">AI Discovery</div>
+          </div>
+          <div class="timeline-node completed">
+            <div class="timeline-circle">G</div>
+            <div class="timeline-phase">Phase G</div>
+            <div class="timeline-title">Retention</div>
+          </div>
+          <div class="timeline-node completed">
+            <div class="timeline-circle">K</div>
+            <div class="timeline-phase">Phase K</div>
+            <div class="timeline-title">Multi-Tenant</div>
+          </div>
+          <div class="timeline-node active">
+            <div class="timeline-circle">L</div>
+            <div class="timeline-phase">Phase L</div>
+            <div class="timeline-title">Production</div>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; text-align: center; max-width: 800px; margin: 0 auto; margin-top: 1rem; color: var(--on-surface-variant);">
+          APEX LUXE progressed from core data schemas (A), through user experience & cart pipelines (C), visual & conversational AI styling modules (F, G), multi-tenant SaaS routing (K), and finalized with production-hardened Stripe webhooks and Prisma security extensions (L).
+        </p>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Evolution Journey</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: Results -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Performance Outputs</span>
+        <h2>Results</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="metric-container glass-card">
+            <div class="metric-value">40<span>+</span></div>
+            <div class="metric-label">Pages Compiled</div>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--on-surface-variant);">Next.js optimized routes for catalog, admin controls, styling visualizer, and tenant preferences.</p>
+          </div>
+          <div class="metric-container glass-card">
+            <div class="metric-value">0<span>ms</span></div>
+            <div class="metric-label">Secret Leakage</div>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--on-surface-variant);">Full Git reinitialization, secrets scrubbed, and env files secured under explicit ignores.</p>
+          </div>
+          <div class="metric-container glass-card">
+            <div class="metric-value">100<span>%</span></div>
+            <div class="metric-label">Hydration Stability</div>
+            <p style="font-size: 0.8rem; margin-top: 0.5rem; color: var(--on-surface-variant);">Full suppressions of browser translation engines and clean dynamic date formatting.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>Results & Verification</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 17: Future Roadmap -->
+    <div class="slide">
+      <div class="slide-header">
+        <span class="accent-text">Continuous Evolution</span>
+        <h2>Future Roadmap</h2>
+      </div>
+      <div class="slide-body">
+        <div class="grid-3">
+          <div class="glass-card">
+            <span class="accent-text">Q3 2026</span>
+            <h3 style="margin-top: 0.5rem;">Native App Integration</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Deploying React Native shared commerce clients, linking with device push notification logs and Apple/Google wallet passes.</p>
+          </div>
+          <div class="glass-card">
+            <span class="accent-text">Q4 2026</span>
+            <h3 style="margin-top: 0.5rem;">Dynamic AI Agents</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Integrating automated vendor customer support agents that handle shipment complaints, refunds, and catalog sizing checks locally.</p>
+          </div>
+          <div class="glass-card">
+            <span class="accent-text">Q1 2027</span>
+            <h3 style="margin-top: 0.5rem;">International Exp.</h3>
+            <p style="font-size: 0.85rem; margin-top: 0.5rem;">Deploying localized databases across secondary geographic regions to cut down latency and comply with localized GDPR/tax policies.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span class="logo">APEX<span>LUXE</span></span>
+        <span>The Future</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 18: Closing Slide -->
+    <div class="slide slide-cover">
+      <div>
+        <span class="accent-text">Intelligent Commerce</span>
+        <h1 style="font-size: 5rem; letter-spacing: -3px;">APEX LUXE</h1>
+        <p class="subtitle" style="font-size: 1.5rem; margin-bottom: 2rem;">Building the Future of Intelligent Commerce</p>
+        
+        <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; max-width: 500px; margin: 0 auto; text-align: left;">
+          <p style="font-family: var(--font-mono); font-size: 0.85rem; color: #fff; margin-bottom: 0.5rem;">
+            <strong>CONTACT & LINKS:</strong>
+          </p>
+          <p style="font-size: 0.85rem; margin-bottom: 0.25rem;">Author: <strong>Hussein Ahmed</strong></p>
+          <p style="font-size: 0.85rem; margin-bottom: 0.25rem;">Email: <a href="mailto:contact@husseinahmed.me" style="color: var(--primary); text-decoration: none;">contact@husseinahmed.me</a></p>
+          <p style="font-size: 0.85rem;">GitHub: <a href="https://github.com/HusseinA-H" target="_blank" style="color: var(--primary); text-decoration: none;">github.com/HusseinA-H</a></p>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; font-size: 0.8rem; font-family: var(--font-mono); color: var(--on-surface-variant);">
+        Thank You
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const currentNum = document.getElementById('currentNum');
+    const totalNum = document.getElementById('totalNum');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const progressBar = document.getElementById('progressBar');
+
+    totalNum.innerText = totalSlides;
+
+    function showSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      
+      slides[currentSlide].classList.remove('active');
+      currentSlide = index;
+      slides[currentSlide].classList.add('active');
+
+      currentNum.innerText = currentSlide + 1;
+      progressBar.style.width = ((currentSlide + 1) / totalSlides * 100) + '%';
+
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides - 1;
+    }
+
+    function navigate(direction) {
+      showSlide(currentSlide + direction);
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+        if (currentSlide < totalSlides - 1) {
+          navigate(1);
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (currentSlide > 0) {
+          navigate(-1);
+        }
+      }
+    });
+
+    // Initialize progress bar width
+    progressBar.style.width = (1 / totalSlides * 100) + '%';
+  </script>
+</body>
+</html>
