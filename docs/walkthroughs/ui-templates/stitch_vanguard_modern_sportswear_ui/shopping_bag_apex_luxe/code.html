@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#5f5e5e",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#c4c7c7",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-tertiary-container": "#6a8300",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary-fixed": "#c8f232",
+                    "surface": "#131313",
+                    "outline-variant": "#444748",
+                    "tertiary-fixed-dim": "#add500",
+                    "on-error": "#690005",
+                    "primary": "#c9c6c5",
+                    "background": "#131313",
+                    "on-tertiary-fixed-variant": "#3d4d00",
+                    "on-tertiary": "#293500",
+                    "on-secondary-container": "#b4b5b5",
+                    "outline": "#8e9192",
+                    "surface-variant": "#353534",
+                    "secondary-container": "#454747",
+                    "surface-tint": "#c9c6c5",
+                    "on-primary": "#313030",
+                    "on-primary-fixed-variant": "#474646",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-container": "#0b0b0b",
+                    "primary-fixed-dim": "#c9c6c5",
+                    "tertiary-container": "#080d00",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary": "#add500",
+                    "on-background": "#e5e2e1",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary": "#2f3131",
+                    "surface-dim": "#131313",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-primary-container": "#7b7979",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#c6c6c7",
+                    "primary-fixed": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-bright": "#3a3939",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-highest": "#353534",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#171e00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "xxl": "80px",
+                    "xl": "40px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "sm": "8px",
+                    "container-max": "1440px",
+                    "lg": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "button": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .luxury-glass {
+            background: rgba(11, 11, 11, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-tertiary selection:text-on-tertiary">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-20 bg-background/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop z-50">
+<div class="font-display-lg text-headline-lg tracking-tighter text-on-background">APEX LUXE</div>
+<div class="hidden md:flex gap-xl">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">Collections</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">New Arrivals</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">Performance</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">Training</a>
+</div>
+<div class="flex items-center gap-lg">
+<button class="material-symbols-outlined text-on-surface hover:text-tertiary transition-colors">favorite</button>
+<button class="material-symbols-outlined text-tertiary transition-colors border-b-2 border-tertiary pb-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shopping_bag</button>
+<button class="material-symbols-outlined text-on-surface hover:text-tertiary transition-colors">person</button>
+</div>
+</nav>
+<main class="pt-xxl min-h-screen max-w-container-max mx-auto px-margin-desktop">
+<!-- Shopping Cart Section -->
+<section class="py-xl">
+<h1 class="font-headline-xl text-headline-xl mb-xl">Your Cart (2)</h1>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl items-start">
+<!-- Items List -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- Item 1 -->
+<div class="luxury-glass p-lg flex flex-col sm:flex-row gap-lg group">
+<div class="w-full sm:w-40 aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A close-up studio shot of a premium black technical compression shirt with volt-green reflective detailing. The fabric shows a intricate hexagonal mesh pattern, lit by sharp cinematic key lights that emphasize the texture and athletic form. The background is a deep matte black, creating a sense of elite athletic performance and luxury minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-OEQY4NMjkuoGQDY-vQb3u0-Aq4wvOAX6Keo_eMZnnkUPco0syGgFtGnmhRL4zui1L2A2FxgR09U0rI2Q6TA3Ax65fiBPpTUJNaJG58EwjdymGjdoqYgI1NuCG06qJePWHjGtjW88Ba9YiWTWs8XE0G9bXIG5cEP85xIco4d39EUC19EKJFdTckVyH6yp04VOLsHbLLyql5ot9tEtzeBeAvrIZp8HyQqpCs61MJPQ-u--vfUZ_2haHEVyd68pCfCqD48kRQWsYGRk"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-on-tertiary-fixed-variant">PERFORMANCE</span>
+<h3 class="font-headline-lg text-headline-lg mt-xs">APEX KINETIC TEE</h3>
+<p class="font-body-md text-on-surface-variant">Onyx Black / Size L</p>
+</div>
+<div class="font-headline-lg text-headline-lg">$125.00</div>
+</div>
+<div class="flex flex-wrap items-center justify-between mt-xl gap-md">
+<div class="flex items-center border border-white/10 rounded-lg overflow-hidden">
+<button class="px-4 py-2 hover:bg-surface-variant transition-colors material-symbols-outlined">remove</button>
+<span class="px-6 font-bold">1</span>
+<button class="px-4 py-2 hover:bg-surface-variant transition-colors material-symbols-outlined">add</button>
+</div>
+<div class="flex gap-lg">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span> Move to Wishlist
+                                    </button>
+<button class="font-label-caps text-label-caps text-error hover:text-error/80 flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span> Remove
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="luxury-glass p-lg flex flex-col sm:flex-row gap-lg group">
+<div class="w-full sm:w-40 aspect-[4/5] bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-end athletic joggers made from a heavy, structured technical fabric in a muted charcoal grey. The garment features hidden zip pockets and tailored anatomical seams. The lighting is moody and low-profile, highlighting the premium drape of the material against a dark, industrial concrete backdrop. Minimalist and powerful aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARPxGAolyTCJhiM7NaYhvfk3S-CXmpFjUg5TRCj7tWBIZ-MFiKlNtPAqy7Tjsvl10VB7wTjYlxAYG0r88XQZeXB0xAwR_HMYXtjg_ExIH25ktEUBbvK_FK6Cxubsij0EJoxLX7To7-_RzqR8QxV1w09Mzl3uFizr40p97sf5AUHv1lo6UntzA2BGBF5SgAovAK3Gm4Tp2tLKxukIPP5Ee1iJ1fMR38eN4ccNK_bTdGOq2lx6g8lX1R34HLDQtvW_3h5HqmCEc0Rbgc"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<span class="font-label-caps text-label-caps text-on-tertiary-fixed-variant">TRAINING</span>
+<h3 class="font-headline-lg text-headline-lg mt-xs">ELEMENT CARGO JOGGER</h3>
+<p class="font-body-md text-on-surface-variant">Graphite / Size 32</p>
+</div>
+<div class="font-headline-lg text-headline-lg">$195.00</div>
+</div>
+<div class="flex flex-wrap items-center justify-between mt-xl gap-md">
+<div class="flex items-center border border-white/10 rounded-lg overflow-hidden">
+<button class="px-4 py-2 hover:bg-surface-variant transition-colors material-symbols-outlined">remove</button>
+<span class="px-6 font-bold">1</span>
+<button class="px-4 py-2 hover:bg-surface-variant transition-colors material-symbols-outlined">add</button>
+</div>
+<div class="flex gap-lg">
+<button class="font-label-caps text-label-caps text-on-surface-variant hover:text-tertiary flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span> Move to Wishlist
+                                    </button>
+<button class="font-label-caps text-label-caps text-error hover:text-error/80 flex items-center gap-xs transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span> Remove
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Summary -->
+<div class="lg:col-span-4 sticky top-24">
+<div class="luxury-glass p-xl">
+<h2 class="font-headline-lg text-headline-lg mb-lg">Order Summary</h2>
+<div class="space-y-md border-b border-white/10 pb-lg mb-lg">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Subtotal</span>
+<span>$320.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Shipping Estimate</span>
+<span class="text-tertiary">FREE</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Taxes</span>
+<span>$25.60</span>
+</div>
+</div>
+<div class="mb-lg">
+<label class="font-label-caps text-label-caps text-on-surface-variant block mb-sm">Promo Code</label>
+<div class="flex gap-sm">
+<input class="bg-surface-container border border-white/10 rounded-lg px-md py-3 flex-1 focus:ring-1 focus:ring-tertiary focus:border-tertiary outline-none transition-all" placeholder="Enter code" type="text"/>
+<button class="font-button text-button px-lg border border-white/10 hover:bg-white/5 transition-colors rounded-lg">Apply</button>
+</div>
+</div>
+<div class="flex justify-between items-end mb-xl">
+<span class="font-headline-lg text-headline-lg">Total</span>
+<span class="font-headline-lg text-headline-lg text-tertiary">$345.60</span>
+</div>
+<button class="w-full bg-tertiary text-on-tertiary font-button text-button py-lg rounded-lg active:scale-95 transition-all shadow-lg shadow-tertiary/10">
+                            Complete Purchase
+                        </button>
+<div class="mt-lg flex items-center justify-center gap-md text-on-surface-variant text-sm opacity-60">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+                            Secure checkout powered by APEX PAY
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Wishlist Section -->
+<section class="py-xxl border-t border-white/5">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="font-headline-xl text-headline-xl">Your Wishlist</h2>
+<p class="text-on-surface-variant mt-xs">Saved for later. Add them to your bag anytime.</p>
+</div>
+<button class="font-label-caps text-label-caps text-tertiary underline decoration-2 underline-offset-4 hover:text-white transition-colors">View All Wishlist</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<!-- Wishlist Item 1 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A pair of ultra-sleek, aerodynamic white running sneakers with subtle metallic silver structural overlays. The lighting is sharp and dynamic, casting long shadows that emphasize the aggressive profile and innovative sole design. Minimalist studio background with a slight cool-toned gradient, reflecting high-end luxury sportswear branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDB4xw5WbsQO3Es43H1GfZRwfdlL4llJUFzvXBR7pNBAitttuU3McEwTjjNGsbfEWq4TRANGDssbxtvqH-At-RGSFubuoP8C1kEbk6EXweca7OWnFGLTW6IOyABj5cnW-u5JdADW6PRzUl-6x1MG_eQ2cRywKT3KfeNLxTc4R5dnpiu2ng_9G9xr5PYDzvENzrInx_T1E3mAOnwkLwbJoGUa5bOGTfWIjhT2q48b63g5CJphAN3iHjnWlAkyyEcgTPVzIJKCl9X_nkg"/>
+<button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md p-2 rounded-full hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-black font-button text-button py-3 rounded active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span> Add to Cart
+                            </button>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">FOOTWEAR</span>
+<h4 class="font-body-lg font-bold">APEX VELOCITY R1</h4>
+<p class="font-body-md text-tertiary">$220.00</p>
+</div>
+<!-- Wishlist Item 2 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A premium matte black stainless steel insulated water bottle with a laser-etched minimalist logo. The bottle sits on a dark, reflective surface with small crystalline water droplets. Dramatic side lighting creates high contrast highlights on the bottle's cylindrical form. Luxurious, technical accessory aesthetic with deep shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0M6ctWTewoixB0WX-3CpxoE3z_goINlZFc3a184B8-mnDulYcfOSoohFx9VfBCKYp1ga8kuSOImbuhURZtKwPRORY7bfFClAmzRf_EfLy_-KLHoZ-OXM6R9ovIZ1yRxz6Vs81RvQuuvaBdf6ZpEkCTItjo_E2aaQrhlj1UPwzyqqPZZTyBSThCZkVrBEQrm_Y6lifRDmglbY_dz87_QAU5d5fGgeic2Js49mu-8Skn5IoXZgtf5u_X1qcSVJDqOj_2_JCAYzjEr0h"/>
+<button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md p-2 rounded-full hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-black font-button text-button py-3 rounded active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span> Add to Cart
+                            </button>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ACCESSORIES</span>
+<h4 class="font-body-lg font-bold">HYDRO-SHELL 1.0</h4>
+<p class="font-body-md text-tertiary">$45.00</p>
+</div>
+<!-- Wishlist Item 3 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A luxurious navy blue technical windbreaker jacket suspended in mid-air to show its lightweight properties. The lighting is soft and diffused, highlighting the waterproof fabric texture and high-quality bonded zippers. The style is ultra-modern, elite outerwear, set against a dark architectural background with subtle vertical lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDokXCZSGBWV5pmxqw4w24GJieVQCADFt8lCTUJsxDXFSLwFR6rLn70X0qsIZaAY6h4ll7nuzumD0PjIN2bw2oHF_ETMrl8x8Na-V5pIM9so4uKk0NRQC64BjsP5K4koEi3Gi8I8UoALmIeO6916nnsrrrnjuU0FBRlfTn3ZZh9P_SOH61oKPR_jyAzieXZwTGOS-Ac_Goc7efiDQmhklox7IiFMkfesG2l-J5xXmczoQ_P9omIQf6s_FJfJk8CaI8cSx388kRi3urz"/>
+<button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md p-2 rounded-full hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-black font-button text-button py-3 rounded active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span> Add to Cart
+                            </button>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">COLLECTIONS</span>
+<h4 class="font-body-lg font-bold">AERO-STORM SHELL</h4>
+<p class="font-body-md text-tertiary">$310.00</p>
+</div>
+<!-- Wishlist Item 4 -->
+<div class="group">
+<div class="aspect-[4/5] bg-surface-container relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Precision-engineered charcoal grey fitness weights with a knurled grip pattern and sleek geometric design. The weights are arranged on a dark metallic rack. The lighting is intense and focused, creating a high-energy gym atmosphere with a sophisticated, expensive edge. High-contrast, monochrome photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR8OvT5n_1LreR-t7KKWPJhbOMAoMa4eUz_-PChZz9vmEldne5VNeJZ78fHTVN3bUXqT-QfA8zywJkcIZoXS35SYqeZDehnFXIIzuG3J9698n6V51K8einxH7thkvgffRZpRv68Klf6UlJudZ4I2uwIMN4QksmJ6dV2y39OO0cJoVvoYdlY29cpvhhuY-HcE1L9yki5uQmPq366TMna6_bouM_kbRI5TUqL8_wCqZbCnzzCka52EHxVk392Znu8u173EAqA-n1muLP"/>
+<button class="absolute top-4 right-4 bg-black/40 backdrop-blur-md p-2 rounded-full hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+<button class="w-full bg-white text-black font-button text-button py-3 rounded active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">shopping_cart</span> Add to Cart
+                            </button>
+</div>
+</div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">TRAINING</span>
+<h4 class="font-body-lg font-bold">PRECISION DUMBBELLS</h4>
+<p class="font-body-md text-tertiary">$180.00</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black py-xxl border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 px-margin-desktop max-w-container-max mx-auto gap-xl">
+<div>
+<div class="font-display-lg text-headline-lg text-white mb-lg">APEX LUXE</div>
+<p class="text-outline font-body-md max-w-xs">Forging the intersection of elite performance and uncompromising luxury. Designed for those who demand more.</p>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-white mb-lg">SHOP</h5>
+<ul class="space-y-sm">
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">New Arrivals</a></li>
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Best Sellers</a></li>
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Collections</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-white mb-lg">SUPPORT</h5>
+<ul class="space-y-sm">
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Shipping</a></li>
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Returns</a></li>
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-white mb-lg">LEGAL</h5>
+<ul class="space-y-sm">
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+<div class="mt-xl flex gap-lg">
+<a class="text-white hover:text-tertiary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-white hover:text-tertiary transition-colors" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-white hover:text-tertiary transition-colors" href="#"><span class="material-symbols-outlined">mail</span></a>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop mt-xxl flex flex-col md:flex-row justify-between items-center gap-lg">
+<p class="font-label-caps text-label-caps text-outline">© 2024 APEX LUXE. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-outline">credit_card</span>
+<span class="material-symbols-outlined text-outline">account_balance_wallet</span>
+<span class="material-symbols-outlined text-outline">payments</span>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom NavBar -->
+<nav class="fixed bottom-0 w-full z-50 lg:hidden bg-surface-container/90 backdrop-blur-md border-t border-white/10 shadow-2xl flex justify-around items-center py-4 px-margin-mobile">
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-[10px] mt-1">Shop</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-caps text-[10px] mt-1">AI Stylist</span>
+</a>
+<a class="flex flex-col items-center text-tertiary active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-caps text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple cart interaction simulation
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.innerText === 'add' || this.innerText === 'remove') {
+                    const span = this.parentElement.querySelector('span');
+                    let val = parseInt(span.innerText);
+                    if(this.innerText === 'add') val++;
+                    else if(val > 1) val--;
+                    span.innerText = val;
+                }
+            });
+        });
+
+        // Sticky Navbar effect on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-background/95', 'shadow-2xl');
+            } else {
+                nav.classList.remove('bg-background/95', 'shadow-2xl');
+            }
+        });
+    </script>
+</body></html>

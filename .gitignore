@@ -1,0 +1,90 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnp
+.pnp.js
+
+# Next.js build output
+.next/
+**/.next/
+out/
+**/.swc/
+
+# NestJS build output
+dist/
+**/dist/
+tsconfig.build.tsbuildinfo
+*.tsbuildinfo
+
+# Testing & Coverage
+coverage/
+**/coverage/
+.nyc_output
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.production
+.env.development
+**/.env
+**/.env.local
+**/.env.production
+**/.env.development
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.swo
+
+# Docker / Kubernetes local states
+.docker/
+
+# Debug and Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+logs/
+**/logs/
+
+# Temporary / Cache Files
+.cache/
+.parcel-cache/
+.turbo/
+**/tmp/
+**/temp/
+dev-error.txt
+dev-output.txt
+
+# Local Documentation Working Files
+md Files/
+md Files/**
+*.tmp
+*.bak
+
+# Scratch and Local Testing Files
+scratch/
+**/scratch/
+C:/Users/ah199/
+**/verify-*.js
+**/verify-*.ts
+*.log
+

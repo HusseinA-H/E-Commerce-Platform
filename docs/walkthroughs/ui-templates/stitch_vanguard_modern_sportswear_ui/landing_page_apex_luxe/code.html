@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: rgba(11, 11, 11, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#5f5e5e",
+                      "on-error-container": "#ffdad6",
+                      "on-surface-variant": "#c4c7c7",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-tertiary-container": "#6a8300",
+                      "surface-container-low": "#1c1b1b",
+                      "tertiary-fixed": "#c8f232",
+                      "surface": "#131313",
+                      "outline-variant": "#444748",
+                      "tertiary-fixed-dim": "#add500",
+                      "on-error": "#690005",
+                      "primary": "#c9c6c5",
+                      "background": "#131313",
+                      "on-tertiary-fixed-variant": "#3d4d00",
+                      "on-tertiary": "#293500",
+                      "on-secondary-container": "#b4b5b5",
+                      "outline": "#8e9192",
+                      "surface-variant": "#353534",
+                      "secondary-container": "#454747",
+                      "surface-tint": "#c9c6c5",
+                      "on-primary": "#313030",
+                      "on-primary-fixed-variant": "#474646",
+                      "on-primary-fixed": "#1c1b1b",
+                      "surface-container-lowest": "#0e0e0e",
+                      "primary-container": "#0b0b0b",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "tertiary-container": "#080d00",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary": "#add500",
+                      "on-background": "#e5e2e1",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary": "#2f3131",
+                      "surface-dim": "#131313",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-primary-container": "#7b7979",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-surface": "#e5e2e1",
+                      "secondary": "#c6c6c7",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-bright": "#3a3939",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-highest": "#353534",
+                      "surface-container": "#201f1f",
+                      "on-tertiary-fixed": "#171e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "xxl": "80px",
+                      "xl": "40px",
+                      "unit": "8px",
+                      "margin-desktop": "48px",
+                      "sm": "8px",
+                      "container-max": "1440px",
+                      "lg": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "button": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-20 bg-background/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop w-full z-50">
+<div class="font-display-lg text-headline-lg tracking-tighter text-on-background">APEX LUXE</div>
+<div class="hidden md:flex items-center gap-xl font-label-caps text-label-caps">
+<a class="text-tertiary border-b-2 border-tertiary pb-1 active:scale-95 transition-transform" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300 active:scale-95 transition-transform" href="#">New Arrivals</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300 active:scale-95 transition-transform" href="#">Performance</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300 active:scale-95 transition-transform" href="#">Training</a>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined cursor-pointer hover:text-tertiary transition-colors">favorite</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-tertiary transition-colors">person</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-tertiary transition-colors">shopping_cart_checkout</span>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[921px] flex items-center justify-start px-margin-desktop overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A professional male athlete in sleek black compression wear performing a powerful sprint in a high-contrast cinematic setting. The lighting is dramatic and moody, focusing on the muscle definition and technical fabric textures. Deep blacks and silvery highlights dominate the color palette, creating an expensive and elite performance aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB23-6UAIqQ8Q4LpF9hBj_c6CyQTLJPV52ctC9vuWTD6DFdVMyKLiuVysHztXEJHWqpUem19uXoKi1l7Ioe7hOnKBqbABfZDG08FWNpj20-M6VWzikr8BwX99zHnOTCVF9wCJyCzo8guEiAwxRFo2I2dUq0a1NLsnFTvL9pASNuZYIjSgi3wtQWsK00pmtx-eB5MAUoKKA-5DilevjOrxkKi7cRMBIEHjGy6y3HkZDKiGAB2g1-bxA6yL9oijuSODpufGqcYEOsLWkf"/>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-3xl space-y-lg">
+<p class="font-label-caps text-label-caps text-tertiary tracking-[0.3em]">ENGINEERED FOR EXCELLENCE</p>
+<h1 class="font-display-lg text-display-lg uppercase leading-none">PERFORMANCE<br/>UNCOMPROMISED</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">Technically superior athletic apparel designed for the modern elite. Precision engineering meets high-end minimalism for the pursuit of absolute mastery.</p>
+<div class="flex gap-md pt-lg">
+<button class="bg-primary-container text-white border border-white px-xl py-md font-button text-button hover:bg-white hover:text-black transition-all">SHOP THE COLLECTION</button>
+<button class="text-white underline underline-offset-8 px-md py-md font-button text-button hover:text-tertiary transition-colors">EXPLORE TECH</button>
+</div>
+</div>
+</section>
+<!-- Featured Collections Bento Grid -->
+<section class="py-xxl px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<p class="font-label-caps text-label-caps text-outline mb-xs">CURATED SERIES</p>
+<h2 class="font-headline-lg text-headline-lg">FEATURED COLLECTIONS</h2>
+</div>
+<div class="font-label-caps text-label-caps text-tertiary cursor-pointer hover:underline">VIEW ALL CATEGORIES</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-[800px]">
+<!-- Performance - Large Column -->
+<div class="md:col-span-8 group relative overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" data-alt="A close-up of high-performance technical fabric in deep charcoal, showing the intricate weave and sweat-wicking properties. The setting is a minimalist, dimly lit training studio with a focus on geometric shadows. The overall aesthetic is clean, industrial, and highly professional, reflecting athletic luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_y5mZZv_nYIOi0o7RI9YBw62pqv4e-Nz4aHwvF4hzY9ffc99Fx0vFpWgka3V72AwPCIkx9HF-orcQ8ubigeIX8w6sbJsUs0TCZNqXWw4GQSFjwW964yFfyEpNZrzkvitzH-V79MXbDKiZxpC8fGNwBI82Fryr4PPOnA0ptEYoZZXtb_t9B-8dNwS3F80aj-j70bGQX18EnkVkPHewL_x1QvFUazhYHW-iposlrcGa6VLw_AhLHhrdnaCW_QPsNjvDmv_ofAjjvKuI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-xl">
+<p class="font-label-caps text-label-caps text-tertiary">01</p>
+<h3 class="font-headline-xl text-headline-xl mb-md">PERFORMANCE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-lg">Ultra-lightweight garments designed for high-intensity movement and thermal regulation.</p>
+<a class="font-button text-button border-b border-white w-fit pb-1" href="#">EXPLORE SERIES</a>
+</div>
+</div>
+<!-- Vertical Stack for Training and Lifestyle -->
+<div class="md:col-span-4 flex flex-col gap-gutter">
+<div class="h-1/2 group relative overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70" data-alt="A male model wearing a sleek black training hoodie in a minimalist concrete architectural space. The lighting is crisp and natural, highlighting the architectural lines and the premium drape of the garment. The mood is focused and serene, utilizing a monochrome palette of blacks and greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrhSw6vM5mx91k9cEVUoYG-DH1sMUZTXCP1sj0XqKoa5S7E4QZJczw6GkmZLKBkLvV6HqLumT__QVhvlSeX3kTKh5DjVo4MFEkehV5grHALQC998I9jZ81V9lxawhsjAD5fPWwIozQlR8NKsuhjRw7KwioXuysM_nODvrIM33cqTsJOf1pOJO1-LLCb5wMJARswbIalrT5suq5C8N24Av-ssPriGyWah8ev43eGwWmvA06JVc103W6PG0pZ_WqCXcw4yX7rDC3Atns"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-lg">
+<p class="font-label-caps text-label-caps text-tertiary">02</p>
+<h3 class="font-headline-lg text-headline-lg mb-xs">TRAINING</h3>
+<a class="font-button text-button border-b border-white w-fit pb-1" href="#">SHOP NOW</a>
+</div>
+</div>
+<div class="h-1/2 group relative overflow-hidden bg-surface-container-lowest">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-70" data-alt="Modern lifestyle athletic apparel displayed in a high-end urban setting at night. Neon accents from city lights reflect off the technical materials. The image captures a sophisticated, urban vibe with a focus on style and functionality, using a palette of dark navy and neon volt accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYnR41SK9kniD_YsL263aDWsPR2LLtlG2oU9pIISHbWHD13PUrfMAVQ2dl68sufQ4ZIx_G7nR5341lwZ0dycC4u5NHTsMJF30lUb8GtyZK0kWxH69NwcYxqrQWb6ivWlp5yLJCRevbtZwU5Bb-9Qboyg_ZVNk6Eh5pvLlmGZcHeLDv_I6ZcSSrFuAyKAe99oAlXFYJKKnTMdMDp0jO9UUepjpT-tlAZRJbFT-Xc1Qoxlb6oGB8aDpIvC5f3oLmB_Wzvoa8wXO1FKMD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-lg">
+<p class="font-label-caps text-label-caps text-tertiary">03</p>
+<h3 class="font-headline-lg text-headline-lg mb-xs">LIFESTYLE</h3>
+<a class="font-button text-button border-b border-white w-fit pb-1" href="#">SHOP NOW</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- New Arrivals Horizontal Scroll -->
+<section class="py-xxl bg-surface-container-lowest">
+<div class="px-margin-desktop max-w-container-max mx-auto mb-xl flex justify-between items-center">
+<h2 class="font-headline-lg text-headline-lg uppercase tracking-tight">NEW ARRIVALS</h2>
+<div class="flex gap-md">
+<button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-tertiary transition-colors active:scale-90" onclick="document.getElementById('product-scroll').scrollBy({left: -400, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:border-tertiary transition-colors active:scale-90" onclick="document.getElementById('product-scroll').scrollBy({left: 400, behavior: 'smooth'})">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="flex gap-gutter overflow-x-auto no-scrollbar px-margin-desktop scroll-smooth" id="product-scroll">
+<!-- Product Card 1 -->
+<div class="min-w-[320px] lg:min-w-[400px] group cursor-pointer">
+<div class="aspect-[4/5] bg-surface relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A premium black thermal compression top presented in a studio setting with sharp, clean lighting. The garment is worn by a male athlete, showcasing the ergonomic seams and technical panels. The background is a flat, deep gray, focusing entirely on the high-end product design and athletic form." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_AAXwspT916HYxoMglThbdmDz2YEKUrbPAsQH0OFlgXonxMf0QvGsxUS63OkeWjKJnetcL35OOpfHZJhq1QEUDMT1s-NoRmhHUM3c5QU4UUKFBpwuglS_J228weAKFJL2W94CLpBc0hDQRVHfCTPQ4TeH9ccEwD0nlLK7TS0skj0vLCEAl-b7bCGqQGJzheePRhCxCXfkbR4cSof96gmipa-xXWlORc7nulTyjnM-R5TgtlRpOaX1Nix3ETAx_P9fzPI_xV1NYawk"/>
+<div class="absolute bottom-4 right-4 bg-tertiary text-on-tertiary-fixed font-label-caps text-[10px] px-3 py-1 rounded-full">NEW</div>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-black px-lg py-md font-button text-button active:scale-95 transition-transform">QUICK ADD</button>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-outline">PERFORMANCE</p>
+<h4 class="font-headline-lg text-[20px] py-1">APEX V1 THERMAL COMPRESSION</h4>
+<p class="font-body-md text-body-md">$145.00</p>
+</div>
+<!-- Product Card 2 -->
+<div class="min-w-[320px] lg:min-w-[400px] group cursor-pointer">
+<div class="aspect-[4/5] bg-surface relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Men's elite carbon-fiber sole running shoes in a monochrome black and grey colorway. The shoes are captured from a low angle on a polished black surface with subtle reflections. The lighting is pinpoint and precise, highlighting the texture of the knit upper and the aerodynamic silhouette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0HI1L8JU8LpKCa0dB4HGut08t30PBErUXzfaKndiHCJqfN6HGNhq6DRIKPAEh6AQ3VJheOu1YF-nufvLTj0YVdfrZrteG78yRodfi3bpdSRK3rENvUxnL8nTFqrwGsmFlc3d8NPo1Ic719nh4nR8TFJ3s32t0iMPgkLyVMeLfRZVaR4YJVUv88JpqVsLEbdfFcsEVwF2cssj_Pa9n4nr9VsuF0ZNCtNP4libWz8Ek716uMhFnZGZLb1Gnoxu26VszokJNwj724zEF"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-black px-lg py-md font-button text-button active:scale-95 transition-transform">QUICK ADD</button>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-outline">FOOTWEAR</p>
+<h4 class="font-headline-lg text-[20px] py-1">KINETIC ELITE RUNNER</h4>
+<p class="font-body-md text-body-md">$210.00</p>
+</div>
+<!-- Product Card 3 -->
+<div class="min-w-[320px] lg:min-w-[400px] group cursor-pointer">
+<div class="aspect-[4/5] bg-surface relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A minimalist black athletic windbreaker with reflective elements, hanging in a bright, modern architectural space. The design is sleek and stripped of excess, showing only the highest quality zippers and laser-cut ventilation. The lighting is clean and diffused, emphasizing the premium quality of the technical outerwear." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsBE_MnrqPoH3Cm1_2Qam7Z1hQ9mRb5hy8Tp9OBt94fTJHyfp-QxjbtoL6uHctDIjsymTKKS0hYVu7b5hCVZ0CS8GJbwA-ZBXscMfBt-r47fIIh4Hm2zkCPVyZWOj_GlernNE1jhpJ3IzvWva99BNsKOo45jbbCnWUuSh6txVWbxTgewqOOKYwDm0VPbQbD-79WA4bev0LO8XKoEtErQjY1ek-ANWOICwFqLidHibB_U9JxldHi3pNq2kzO3rFmRvQJOm7IQDvGIrJ"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-black px-lg py-md font-button text-button active:scale-95 transition-transform">QUICK ADD</button>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-outline">TRAINING</p>
+<h4 class="font-headline-lg text-[20px] py-1">ATMOS WIND SHELL</h4>
+<p class="font-body-md text-body-md">$185.00</p>
+</div>
+<!-- Product Card 4 -->
+<div class="min-w-[320px] lg:min-w-[400px] group cursor-pointer">
+<div class="aspect-[4/5] bg-surface relative overflow-hidden mb-md">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Heavyweight premium cotton blend training jogger in deep obsidian black. The joggers are worn by a male athlete in a resting pose within a stark, industrial gym environment. The fabric has a visible high-quality sheen and structured fit, captured with high-contrast studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTzZvMx8_oQ7nDOzUY2oiSNnmnXGsuiGVCA-UMWS09J6_3adQUDPk3y2pCsGfvCZPsWuT6Pf1qZFaEg-UDI8Dpr9BfoyupH7DfzaNZNfYTXj9omdR36huIU0DfTo6JM4LWO3J-yyj74eqBOwppMVXyPDr0DegrQ9AZaY2fe9l-6-mIJEQo0bi1OZbELcJ_fHM-gELz1u38IQJ2E6RjFlCBCQsly-bT2JkCX4VBx_vDq0ju-jyUrhbftToEk7o2GAxvFJNMCiwBb7E8"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="bg-white text-black px-lg py-md font-button text-button active:scale-95 transition-transform">QUICK ADD</button>
+</div>
+</div>
+<p class="font-label-caps text-label-caps text-outline">LIFESTYLE</p>
+<h4 class="font-headline-lg text-[20px] py-1">CORE PERFORMANCE JOGGER</h4>
+<p class="font-body-md text-body-md">$120.00</p>
+</div>
+</div>
+</section>
+<!-- Brand Philosophy -->
+<section class="py-xxl px-margin-desktop bg-background text-center flex flex-col items-center">
+<div class="max-w-4xl space-y-xl">
+<p class="font-label-caps text-label-caps text-tertiary tracking-[0.4em]">PHILOSOPHY</p>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg leading-tight uppercase">THE LUXURY OF ABSOLUTE PRECISION.</h2>
+<div class="w-24 h-px bg-tertiary mx-auto my-xl"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    APEX LUXE was founded on the belief that peak performance requires an uncompromising commitment to detail. We strip away the unnecessary, leaving only what is essential for greatness. Our fabrics are sourced globally, our silhouettes refined through rigorous testing, and our aesthetic defined by a relentless pursuit of perfection.
+                </p>
+<img class="w-full h-[600px] object-cover mt-xxl grayscale brightness-50" data-alt="A wide panoramic shot of an ultra-modern, brutalist gym architecture featuring raw concrete, vast glass walls, and high-end minimalist equipment. The sun is setting, casting long cinematic shadows across the space. The atmosphere is one of exclusive athletic luxury, focus, and monumental power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQnXmfRanCoSMuQdDclPT4p3h1-FbH0SM2M04nY-t8BDkhS0huK5Y6qPlI8D_r4Jn_uB6OB8R1aE4gju0YTPKXdsYv0Y__9kTrFU_8oRaGNPns-MAb2qHoKiX0VHeo7Ptr2XeaFPlO-SvLGZiUmwkHNjcXNT3Up7W9x1F_XXZyThZH6S5oazKlkVCiAz87SGOUBa9wlHHs7yGHpXKO4y-DF0x7MKf8Xzv0ua514KM-O6f9brteGG04DsVho2RdypFIQvvodZrmxu5x"/>
+</div>
+</section>
+<!-- Newsletter Signup -->
+<section class="py-xxl px-margin-desktop bg-surface-container-lowest border-y border-white/5">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-xl">
+<div class="flex-1 space-y-md">
+<h3 class="font-headline-lg text-headline-lg">JOIN THE APEX CIRCLE</h3>
+<p class="font-body-md text-on-surface-variant">Access exclusive early releases, limited collections, and the latest in technical performance innovation.</p>
+</div>
+<div class="flex-1 w-full">
+<form class="flex flex-col sm:flex-row gap-xs w-full">
+<input class="flex-1 bg-surface border border-white/10 px-lg py-md font-label-caps text-label-caps focus:border-tertiary focus:ring-0 outline-none text-white" placeholder="ENTER YOUR EMAIL" type="email"/>
+<button class="bg-tertiary text-on-tertiary-fixed px-xl py-md font-button text-button hover:opacity-90 transition-opacity active:scale-95" type="submit">SUBSCRIBE</button>
+</form>
+<p class="font-label-caps text-[10px] text-outline mt-md">BY SIGNING UP, YOU AGREE TO OUR PRIVACY POLICY AND TERMS OF SERVICE.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black w-full py-xxl border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 px-margin-desktop max-w-container-max mx-auto gap-xl">
+<div class="col-span-1 md:col-span-1">
+<div class="font-display-lg text-headline-lg text-white mb-lg">APEX LUXE</div>
+<div class="flex gap-lg">
+<span class="material-symbols-outlined text-white hover:text-tertiary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-white hover:text-tertiary cursor-pointer transition-colors">smartphone</span>
+<span class="material-symbols-outlined text-white hover:text-tertiary cursor-pointer transition-colors">mail</span>
+</div>
+</div>
+<div class="col-span-1">
+<p class="font-label-caps text-label-caps text-white mb-lg">SHOP</p>
+<ul class="space-y-md font-label-caps text-label-caps text-outline">
+<li><a class="hover:text-tertiary transition-colors" href="#">Performance</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Training</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Lifestyle</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">New Arrivals</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<p class="font-label-caps text-label-caps text-white mb-lg">SUPPORT</p>
+<ul class="space-y-md font-label-caps text-label-caps text-outline">
+<li><a class="hover:text-tertiary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Shipping</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Returns</a></li>
+<li><a class="hover:text-tertiary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<p class="font-label-caps text-label-caps text-white mb-lg">LOCATION</p>
+<p class="font-body-md text-outline mb-md">Global Headquarters<br/>Zurich, Switzerland</p>
+<div class="w-full h-32 bg-surface-container rounded overflow-hidden">
+<img class="w-full h-full object-cover opacity-50 grayscale" data-alt="A stylized minimalist map of Zurich highlighting the central district in a monochrome dark aesthetic. The map uses thin white lines on a deep black background, consistent with a luxury brand's architectural style." data-location="Zurich" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQY_CWOTqzJSqAQFfHAulNVAd6bAc1a1W6_cl0DTkFcw-O6AyFFup1aZFeL4qpna27QOU91uxt8EnODgHjojclcmGwb_pQyhRUgH_sAvp9F29-9Ij3XS2bsEX-Qe-OmvGFQltPgpMgu5JeeRk8DwSUXKkoNKPMAQlbnt6HBfQO_p1pFiTfBjvCxQAxTur8X_qCbRTKABpBofA24QGJrPv9Q47d2OWTcdHbKVh_6qoy8JuDLDktzRDRMyi9X10sfkLHh2_cuF9DB0M3"/>
+</div>
+</div>
+</div>
+<div class="mt-xxl pt-xl border-t border-white/5 px-margin-desktop max-w-container-max mx-auto">
+<p class="font-label-caps text-label-caps text-outline text-center">© 2024 APEX LUXE. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 lg:hidden bg-surface-container/90 backdrop-blur-md border-t border-white/10 shadow-2xl flex justify-around items-center py-4 px-margin-mobile">
+<div class="flex flex-col items-center text-tertiary font-label-caps text-label-caps-mobile active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span>Home</span>
+</div>
+<div class="flex flex-col items-center text-on-surface-variant font-label-caps text-label-caps-mobile active:scale-90 transition-transform opacity-80 cursor-pointer">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span>Shop</span>
+</div>
+<div class="flex flex-col items-center text-on-surface-variant font-label-caps text-label-caps-mobile active:scale-90 transition-transform opacity-80 cursor-pointer">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span>AI Stylist</span>
+</div>
+<div class="flex flex-col items-center text-on-surface-variant font-label-caps text-label-caps-mobile active:scale-90 transition-transform opacity-80 cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for smooth scrolling or hover effects
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Atmospheric parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImg = document.querySelector('section img');
+            if(heroImg) {
+                heroImg.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+    </script>
+</body></html>

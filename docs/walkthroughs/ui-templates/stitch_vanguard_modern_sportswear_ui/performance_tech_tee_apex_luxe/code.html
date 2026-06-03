@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#5f5e5e",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#c4c7c7",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-tertiary-container": "#6a8300",
+                    "surface-container-low": "#1c1b1b",
+                    "tertiary-fixed": "#c8f232",
+                    "surface": "#131313",
+                    "outline-variant": "#444748",
+                    "tertiary-fixed-dim": "#add500",
+                    "on-error": "#690005",
+                    "primary": "#c9c6c5",
+                    "background": "#131313",
+                    "on-tertiary-fixed-variant": "#3d4d00",
+                    "on-tertiary": "#293500",
+                    "on-secondary-container": "#b4b5b5",
+                    "outline": "#8e9192",
+                    "surface-variant": "#353534",
+                    "secondary-container": "#454747",
+                    "surface-tint": "#c9c6c5",
+                    "on-primary": "#313030",
+                    "on-primary-fixed-variant": "#474646",
+                    "on-primary-fixed": "#1c1b1b",
+                    "surface-container-lowest": "#0e0e0e",
+                    "primary-container": "#0b0b0b",
+                    "primary-fixed-dim": "#c9c6c5",
+                    "tertiary-container": "#080d00",
+                    "surface-container-high": "#2a2a2a",
+                    "tertiary": "#add500",
+                    "on-background": "#e5e2e1",
+                    "secondary-fixed": "#e2e2e2",
+                    "on-secondary": "#2f3131",
+                    "surface-dim": "#131313",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-primary-container": "#7b7979",
+                    "error-container": "#93000a",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-surface": "#e5e2e1",
+                    "secondary": "#c6c6c7",
+                    "primary-fixed": "#e5e2e1",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-bright": "#3a3939",
+                    "inverse-on-surface": "#313030",
+                    "surface-container-highest": "#353534",
+                    "surface-container": "#201f1f",
+                    "on-tertiary-fixed": "#171e00"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "xxl": "80px",
+                    "xl": "40px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "sm": "8px",
+                    "container-max": "1440px",
+                    "lg": "24px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "button": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                    "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .product-image-container { aspect-ratio: 4/5; }
+        .glass-card {
+            background: rgba(11, 11, 11, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-20 bg-background/80 backdrop-blur-xl border-b border-white/10 flex justify-between items-center px-margin-desktop w-full z-50">
+<div class="font-display-lg text-headline-lg tracking-tighter text-on-background">APEX LUXE</div>
+<div class="hidden md:flex gap-xl font-label-caps text-label-caps items-center">
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">Collections</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">New Arrivals</a>
+<a class="text-tertiary border-b-2 border-tertiary pb-1" href="#">Performance</a>
+<a class="text-on-surface-variant hover:text-tertiary transition-colors duration-300" href="#">Training</a>
+</div>
+<div class="flex items-center gap-lg">
+<button class="material-symbols-outlined text-on-background hover:text-tertiary transition-colors">favorite</button>
+<button class="material-symbols-outlined text-on-background hover:text-tertiary transition-colors">person</button>
+<div class="relative active:scale-95 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-on-background">shopping_bag</span>
+<span class="absolute -top-1 -right-1 bg-tertiary text-on-tertiary text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-xxl px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Product Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Gallery -->
+<div class="lg:col-span-7 space-y-md">
+<div class="product-image-container bg-surface-container-lowest overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-fashion photograph of a male athlete wearing a sleek black technical compression top in a minimalist concrete gym. The lighting is high-contrast, dramatic side-lighting that emphasizes the texture of the performance fabric and the model's physique. The background is a blurred, dark industrial space with subtle hints of charcoal and deep black tones." id="main-product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIJgc3WvjPRQvlnkO6ne6jIO9ujs7LCTnxlOghvjpJZyFOK5WunCuas6cuCECOB01xJsFN9JanJA9Soz5dTUZu-p9ENCbzcabbKAPkFhl5hJDQJ1h7j68nPVnAp7OWPyg-nUqkyNdOV51pIUEOG_FY_EjlAdWXVbmttZUbow6DJ1StpNRJcWG-ND-6Lkf4PUaiU8JECcYTaOwf3V6a6LFlkBe7TPI4HTCFm--1Pik-umZNqtCs4yxmCz1jS_4N-7gYzg0FmcrsGQCL"/>
+</div>
+<div class="grid grid-cols-4 gap-sm">
+<button class="product-image-container bg-surface-container-lowest overflow-hidden border-2 border-tertiary" onclick="updateMainImage(this.src)">
+<img class="w-full h-full object-cover" data-alt="Close-up detail of a black high-performance athletic top with laser-cut ventilation and reflective branding. Soft ambient studio lighting highlights the intricate weave of the technical fabric in a premium minimalist setting with a deep black background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUysl2Q34biCmzNSeMebekrus_XpViP8DLQL2Is0SZzXFjp1dD0FOY61HDyTSYz-NUrv0eW1yoxjxLfHQbCKUV5cs1qQ3gWL0tupKoSdQhch2DANIohqJ5QLn9Gk-9UFhf49LNmAxVBDlAd5oAdiH2Ta08yhzKbDgwah1qhchLxoZ2bWYVDLY9NBDPbbhKVl2VjsJsP0y2V6SzBHLLLc9yGpJPtEeD2Xaq9xUJdI_fUiz1hysCfeOEuRdBKq7Z07N5KnyDbUbJFacz"/>
+</button>
+<button class="product-image-container bg-surface-container-lowest overflow-hidden border border-white/5" onclick="updateMainImage(this.src)">
+<img class="w-full h-full object-cover" data-alt="Rear view of a premium athletic compression garment showing anatomical panelling and flatlock stitching. The aesthetic is clean and surgical, with a focus on technical precision and the athletic male silhouette against a dark, moody background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpUkvu1mgkKtla7mUv-O5TvHrqSBIjmHhN_EbmynZ8CHNIfaMJ8HhR2i8ppIipZray9H90Sbl26Xmv1EdL0z9hDdCrShnVsXko-8B0yKDoWQ6_2BuIfM91oOPqjG3ifbvW2hf2CORISk-Q8fiHET3wI02ANELpdZs1a3ybKTn0PNLU2M0kYfpyTozbGaOfsGMAiUs7_wiQZpYB_li1ajIXX93UoQDKikERgRa-JbMXo6ReI2Ry9YE38fRF7NxM9QT4fTUIZdOEXXFb"/>
+</button>
+<button class="product-image-container bg-surface-container-lowest overflow-hidden border border-white/5" onclick="updateMainImage(this.src)">
+<img class="w-full h-full object-cover" data-alt="Macro detail shot of a specialized zipper on a luxury sports jacket. The lighting creates a subtle metallic gleam against the matte black waterproof fabric, reinforcing a sense of expensive, durable craftmanship in a high-key shadow environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqEvl5Wer0MrZnZFDcQGxfCeS858u51_9kvIKrKmm8EZi8aIMOJG2AVRQqlvFDODCcScjPohFZVjGUWxV8m92-VI4TTxksNLzLYmCw1FZZxOo3SZhoJaiDEpYH7qkUWMihpLXTc4O-ppDWBafnn4QMrQWJ_XCKIuA7MeIgh6l3Yf8ut9tPYtNRl02eDH9Vfd4x35_WVynSmodEiuw61uFCC3GPzXb6iYP-NPI_0hHB-l3afLQWU4L9Gz7uuw-QRdpio2Rbe1N4vQDT"/>
+</button>
+<button class="product-image-container bg-surface-container-lowest overflow-hidden border border-white/5" onclick="updateMainImage(this.src)">
+<img class="w-full h-full object-cover" data-alt="An atmospheric wide shot of the technical athletic top being worn during an intense workout in a modern dark fitness studio. Sweat glows on the skin under precise spotlights, creating a powerful, performance-driven aesthetic in the APEX LUXE signature style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpGjDmbu7EI2SxwOH8FdTJEGDbNqY-QjAiGF-GcO-ZYeJNRR78ySWlNBwHCATqjiUiFQwFERCKFXHVRas_TzBiQHuPkdZOs8OswiJp18_2SXNcYCxEU0gRvAUBZTjfYEX51xJtSKGJ8_KSSMFMejgT8yKkSehTDTwbUYUmo_KWij_Y87otbqoQCS5qS5S2nTFGdUU5Ti7e1CwXFinwimECjarXAufRndhxrr7I3gCdcl7XOXa9bsCBEBDcDklehDX3bntj55Ac9qQQ"/>
+</button>
+</div>
+</div>
+<!-- Product Info -->
+<div class="lg:col-span-5 lg:sticky lg:top-28 h-fit space-y-lg">
+<div class="space-y-sm">
+<p class="font-label-caps text-label-caps text-tertiary">PERFORMANCE SERIES</p>
+<h1 class="font-headline-xl text-headline-xl text-on-surface uppercase tracking-tight">Vortex compression shirt v2</h1>
+<p class="font-headline-lg text-headline-lg text-on-background">$145.00</p>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-prose">
+                    Engineered for the elite. Our proprietary Vortex™ fabric provides targeted compression to accelerate recovery and optimize blood flow, while integrated silver-ion technology ensures permanent odor resistance.
+                </p>
+<!-- Size Selector -->
+<div class="space-y-md pt-md">
+<div class="flex justify-between items-center">
+<label class="font-label-caps text-label-caps text-on-surface">SELECT SIZE</label>
+<button class="text-label-caps font-label-caps text-on-surface-variant underline hover:text-tertiary transition-colors">SIZE GUIDE</button>
+</div>
+<div class="grid grid-cols-5 gap-sm">
+<button class="h-12 border border-outline flex items-center justify-center font-label-caps text-label-caps hover:border-tertiary transition-all">S</button>
+<button class="h-12 border-2 border-tertiary bg-tertiary text-on-tertiary flex items-center justify-center font-label-caps text-label-caps">M</button>
+<button class="h-12 border border-outline flex items-center justify-center font-label-caps text-label-caps hover:border-tertiary transition-all">L</button>
+<button class="h-12 border border-outline flex items-center justify-center font-label-caps text-label-caps hover:border-tertiary transition-all">XL</button>
+<button class="h-12 border border-outline flex items-center justify-center font-label-caps text-label-caps opacity-40 cursor-not-allowed">XXL</button>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex gap-md pt-lg">
+<button class="flex-1 h-14 bg-tertiary text-on-tertiary font-button text-button uppercase tracking-widest active:scale-95 transition-all">Add to Cart</button>
+<button class="w-14 h-14 border border-outline flex items-center justify-center hover:border-white transition-all active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<!-- Accordion -->
+<div class="pt-xl divide-y divide-white/10 border-t border-white/10">
+<details class="group py-md">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<span class="font-label-caps text-label-caps uppercase text-on-surface">Material &amp; Specs</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-md text-on-surface-variant space-y-sm">
+<p>• 82% Recycled Polyamide, 18% Elastane</p>
+<p>• 4-Way Hyper-Stretch Construction</p>
+<p>• Laser-Cut Ventilation Zones</p>
+</div>
+</details>
+<details class="group py-md">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<span class="font-label-caps text-label-caps uppercase text-on-surface">Fit &amp; Sizing</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-md text-on-surface-variant">
+<p>Athletic Compression Fit. Second-skin feel designed to move with your body during high-intensity sessions. We recommend sizing up if you prefer a less restrictive feel.</p>
+</div>
+</details>
+<details class="group py-md">
+<summary class="flex justify-between items-center list-none cursor-pointer">
+<span class="font-label-caps text-label-caps uppercase text-on-surface">Care Instructions</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="pt-md text-on-surface-variant">
+<p>Machine wash cold. Do not bleach. Tumble dry low. Do not iron. Do not dry clean. Turn garment inside out before washing.</p>
+</div>
+</details>
+</div>
+</div>
+</section>
+<!-- Reviews Section -->
+<section class="mt-xxl border-t border-white/10 pt-xxl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-lg">
+<div class="space-y-md">
+<h2 class="font-headline-lg text-headline-lg uppercase">Community Reviews</h2>
+<div class="flex items-center gap-md">
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0.5;">star_half</span>
+</div>
+<span class="font-body-md text-on-surface">4.8 / 5.0 (124 reviews)</span>
+</div>
+</div>
+<button class="h-12 px-lg border border-white font-button text-button uppercase hover:bg-white hover:text-black transition-all">Write a Review</button>
+</div>
+<!-- Customer Photo Stream -->
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-lg">
+<div class="min-w-[150px] aspect-square bg-surface-container-lowest overflow-hidden border border-white/5">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="Real customer photo of a man training outdoors in a park at sunset, wearing the APEX compression gear. The warm orange light contrasts with the sleek black technical wear, creating an authentic, high-quality user-generated content vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz35ghJPotUIe86RadIqd5GXBygCh-qGrbGmSTwAwppSNnWSDla0Knx7mASQPStQxE86kzsq_tcM52NR-zwveKhgSoLnS2mPd7zJNV--rBjQAqts_mGiNV-XWaiT2LvHeZz-BSC1i8F6fpl6AxCiVLJlt7hBkut1Q9yLFm8mAjok6FhTiGZBcLbr3xCJf-ItkVhchVpWY3I4aeMNZbt-UNn7LTUad7aL6FW9lKCjw4S8_UBWjsT4P91KLr-E3OE3q5izJf-HQm_pyS"/>
+</div>
+<div class="min-w-[150px] aspect-square bg-surface-container-lowest overflow-hidden border border-white/5">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="User-generated shot of the black athletic top during a high-end yoga session in a glass-walled studio. The lighting is bright and clean, reflecting the premium minimalist lifestyle of the APEX LUXE customer base." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4J3jeBGX6d-TKXH5-5JD7-2g7MSvQAqo8KMbXyovMtv62SM4RgDSrQHFG45oPnQO3KwTHABza99bWtsTcFMITV6df1OL_F4s2zdzZH8QOikVpEEqBGVZYIqUqlKSHdtaMRigmlcNmrkfYJeF3FHGx5G55tFpavBZgj2UjW8ypZdCyXCctYUaxCq5CQjabY65OBY4uyVULnvzMl-qUbdOhfcIPGx2vj3yRKiuNdKUHZWJ4dH0KBRuA4P0J0VqV6HxVMRu4y9kbMf1e"/>
+</div>
+<div class="min-w-[150px] aspect-square bg-surface-container-lowest overflow-hidden border border-white/5">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="Customer photo of the performance wear in action during weightlifting. The focus is on the flex and movement of the fabric, captured with a high-speed shutter in a dark, atmospheric home gym environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqrQvqb3tjzTgrkto-AwAIm1FaNRrazsdXncVzxwBjjuSW5d3lz3F4VLlPaRsAnncOC4p4cAzwdwBjCorJHAtiTTIBcO6bIsvqmSoRUPRRi1flS59O8QxciHgq_0rKAPIG50egj1aEoyoN-jQjzDq5dznTPJRsR5BTtpJv1UJ5VV25qyvw0xaJDCY65HU_5xGaPTZqILCCjMviMlx-3B-DDMKL2c_BFILhknD64ZM5mZuc93NKENu9LJ3ynwWu9ML-YDCUG_0GT_gQ"/>
+</div>
+<div class="min-w-[150px] aspect-square bg-surface-container-lowest overflow-hidden border border-white/5">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all" data-alt="Close-up customer review photo showing the fit of the sleeve and the wrist detail. Natural window lighting highlights the matte finish and technical texture of the fabric against a modern residential backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn5c0fbxPeySLkGOAz8f_D561-gS1ezdCsJQ1sCwcYMXxx2rTexrzby63JbMfcxcHBxCpktomd7s-mbqRaMu-HrewQt8G6GoUn6_UMnZaNEq57bGrriKjqsVbUiFgGjuHfiiTRYDD7PHEYk28OBfq3yED70ebXaAzux35HZh4jvyKcEzL-w-qWPmhnhzyskwoXhbVRjBbbrTRYr3_Hfc91q74aSQw9niWFLkwDGVvlQkLPP_-jzmxOOplIvKDedsKitv7BP7BlO6VL"/>
+</div>
+</div>
+<!-- Review Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg mt-lg">
+<div class="p-lg bg-surface-container-lowest border border-white/5 space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-button text-button text-on-surface uppercase">Marcus V.</p>
+<p class="text-[12px] text-outline">Verified Purchase</p>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface">"The compression level is perfect. Most shirts lose their shape after a few washes, but this feels just as tight as day one. Expensive, but you get what you pay for."</p>
+</div>
+<div class="p-lg bg-surface-container-lowest border border-white/5 space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-button text-button text-on-surface uppercase">James T.</p>
+<p class="text-[12px] text-outline">Verified Purchase</p>
+</div>
+<div class="flex text-tertiary">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm">star</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface">"Excellent moisture wicking during high-intensity sessions. Fits slightly small so if you're between sizes, definitely go up. Aesthetic is 10/10."</p>
+</div>
+</div>
+</section>
+<!-- AI Recommendation Section -->
+<section class="mt-xxl">
+<div class="flex items-center gap-md mb-xl">
+<span class="material-symbols-outlined text-tertiary">auto_awesome</span>
+<h2 class="font-headline-lg text-headline-lg uppercase">Styled With AI Stylist</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<!-- Rec 1 -->
+<div class="space-y-md group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container-lowest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A pair of technical black athletic shorts with minimalist branding, laid out on a dark gray concrete surface. The lighting is clean and professional, matching the athletic luxury theme of APEX LUXE." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUE1tXFGrBV4neuW1-wdvMMVxBdGD6QxyOp7-TsNVcG2RllXBlMA_VvY_6KZqj5l5UoL6i87UHX-_9ogkJCYEu49HqL6U3Lnh40Xn8r4cecW1yWSI4JHI7jYMpwIoqkL0WuosQB9T3POOIaDGihTse4b6bC4Ufsa4vU-9z7Qz_4Y5Dfzy5pS7B4_H3r-hMR2uMNL7t00GD-jHhRNhULaVSjqInpvqB2vTKLpEDc4_qVfHx1pDC9eTeOkv3DTNIuRsHqof2hTEC0TLt"/>
+<button class="absolute bottom-4 right-4 bg-white text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-outline">BOTTOMS</p>
+<p class="font-button text-button text-on-surface">AERO-TECH SHORTS</p>
+<p class="font-body-md text-body-md">$85.00</p>
+</div>
+</div>
+<!-- Rec 2 -->
+<div class="space-y-md group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container-lowest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High-performance black running sneakers with vibrant Volt accents. The shoes are shot in a futuristic studio setting with glowing light strips and deep shadows, emphasizing speed and athletic innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVIdu4fsdx-IzZeqciX29pla7MZDKg4p7m8b0vG1MvWIJdTSOkj8W2JjcHczMGeb1LGpMjymz7I8dHkUFfc0UdxE2uflceKea7rkbPDbp0vlgfDgjOJR2ayTMce49d2Qql8tJBKSuMVSdL9_eYjcbJ1jrB6xGpL54JHpOFlr8o0iF5eRIXkI5_vehJZFr3F9FSAMbz5EwSKJUjHJDrbcwSS-D5o5J0oLQGvGtJIIZCz8Awj4KUsCJ03ZqUECS2GMhOZEawDqiaryEl"/>
+<button class="absolute bottom-4 right-4 bg-white text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-outline">FOOTWEAR</p>
+<p class="font-button text-button text-on-surface">VELOCITY ELITE S1</p>
+<p class="font-body-md text-body-md">$210.00</p>
+</div>
+</div>
+<!-- Rec 3 -->
+<div class="space-y-md group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container-lowest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist black sports chronograph watch with a matte finish. The watch is presented on a charcoal marble plinth, under soft high-key lighting that highlights its clean lines and premium build." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsuYnKgBfaRmTXIF0doRJRr6a4x08E4FwEIVmBDTGKpTDDQoQtR1swSdGZWc1PYLDg9v9TDJaX29XKv9aKrbyOrTmv24P2hekzIhHtNNuRQPMhW4RhYyK6bmkkvEHrhEoE7VPW5dykZU8wJoTwzO1-O7nyUinm3Czr3I7UrbF3ufPVAaS7KNWqIQf4HfeXdfD6tMEeMZoe5xYAOAl3xXckYMUZZErE24p_Bq095WEE64PScUus6epISXNCm6i4JwO2vOOnd5BHwaOX"/>
+<button class="absolute bottom-4 right-4 bg-white text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-outline">ACCESSORIES</p>
+<p class="font-button text-button text-on-surface">QUANTUM CHRONO</p>
+<p class="font-body-md text-body-md">$340.00</p>
+</div>
+</div>
+<!-- Rec 4 -->
+<div class="space-y-md group cursor-pointer">
+<div class="aspect-[4/5] bg-surface-container-lowest overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek black technical training jacket with weather-resistant texture and hidden pockets. The garment is draped in a sculptural way against a dark metallic wall, creating a sense of luxury utility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDon0ojfhUBEoyHyfl4GcUzILWy1CjGwQzC3oaC_Ewa1HH-9tRS5BNzVak2E2HMIvwtb80DOJwbEOlbteacPecE1egFrDjyUnV121ZUB8kjhzoMJCX1D25_e0VbfF6Jv9PoRfV-HVAIDYiwHeEptywTIjY9y_Ly3s6VscIMgd11sun2Z2s0RcqecsZSEPZS2VkDmwrFG0UWftnUfCVZo74NpbmrgCZUhCOMXpL_0XiVuOIg63E0fxwlzpCjpIGj8WzwMR484g7XoH4z"/>
+<button class="absolute bottom-4 right-4 bg-white text-black p-2 rounded-full opacity-0 group-hover:opacity-100 transition-all hover:scale-110">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-outline">OUTERWEAR</p>
+<p class="font-button text-button text-on-surface">SHIELD SHELL V1</p>
+<p class="font-body-md text-body-md">$195.00</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black w-full py-xxl border-t border-white/5">
+<div class="grid grid-cols-1 md:grid-cols-4 px-margin-desktop max-w-container-max mx-auto gap-xl">
+<div class="space-y-lg">
+<div class="font-display-lg text-headline-lg text-white">APEX LUXE</div>
+<p class="font-label-caps text-label-caps text-outline">© 2024 APEX LUXE. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex flex-col gap-md">
+<h3 class="font-button text-button text-white uppercase mb-md">Shop</h3>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">New Arrivals</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Performance</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Training</a>
+</div>
+<div class="flex flex-col gap-md">
+<h3 class="font-button text-button text-white uppercase mb-md">Info</h3>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Shipping</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Returns</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-tertiary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex flex-col gap-md">
+<h3 class="font-button text-button text-white uppercase mb-md">Newsletter</h3>
+<div class="relative">
+<input class="w-full bg-[#111111] border border-white/10 px-md py-4 text-label-caps font-label-caps text-white focus:outline-none focus:border-tertiary transition-all" placeholder="ENTER EMAIL" type="email"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-tertiary">arrow_forward</button>
+</div>
+<div class="flex gap-lg pt-md">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-white transition-colors">public</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-white transition-colors">share</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-white transition-colors">podcasts</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 lg:hidden bg-surface-container/90 backdrop-blur-md border-t border-white/10 flex justify-around items-center py-4 px-margin-mobile shadow-2xl">
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90" href="#">
+<span class="material-symbols-outlined">shopping_bag</span>
+<span class="font-label-caps text-[10px]">Shop</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-caps text-[10px]">AI Stylist</span>
+</a>
+<a class="flex flex-col items-center text-on-surface-variant opacity-80 active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px]">Profile</span>
+</a>
+</nav>
+<script>
+        function updateMainImage(src) {
+            const mainImg = document.getElementById('main-product-image');
+            mainImg.style.opacity = '0';
+            setTimeout(() => {
+                mainImg.src = src;
+                mainImg.style.opacity = '1';
+            }, 200);
+
+            // Update border styling
+            const thumbnails = document.querySelectorAll('.grid.grid-cols-4 button');
+            thumbnails.forEach(btn => {
+                btn.classList.remove('border-2', 'border-tertiary');
+                btn.classList.add('border', 'border-white/5');
+                if (btn.querySelector('img').src === src) {
+                    btn.classList.add('border-2', 'border-tertiary');
+                    btn.classList.remove('border-white/5');
+                }
+            });
+        }
+
+        // Simple Fade in on scroll interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

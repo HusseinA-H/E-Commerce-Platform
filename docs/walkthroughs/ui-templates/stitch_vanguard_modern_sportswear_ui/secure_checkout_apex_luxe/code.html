@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout | APEX LUXE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #add500;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#5f5e5e",
+                      "on-error-container": "#ffdad6",
+                      "on-surface-variant": "#c4c7c7",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-tertiary-container": "#6a8300",
+                      "surface-container-low": "#1c1b1b",
+                      "tertiary-fixed": "#c8f232",
+                      "surface": "#131313",
+                      "outline-variant": "#444748",
+                      "tertiary-fixed-dim": "#add500",
+                      "on-error": "#690005",
+                      "primary": "#c9c6c5",
+                      "background": "#131313",
+                      "on-tertiary-fixed-variant": "#3d4d00",
+                      "on-tertiary": "#293500",
+                      "on-secondary-container": "#b4b5b5",
+                      "outline": "#8e9192",
+                      "surface-variant": "#353534",
+                      "secondary-container": "#454747",
+                      "surface-tint": "#c9c6c5",
+                      "on-primary": "#313030",
+                      "on-primary-fixed-variant": "#474646",
+                      "on-primary-fixed": "#1c1b1b",
+                      "surface-container-lowest": "#0e0e0e",
+                      "primary-container": "#0b0b0b",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "tertiary-container": "#080d00",
+                      "surface-container-high": "#2a2a2a",
+                      "tertiary": "#add500",
+                      "on-background": "#e5e2e1",
+                      "secondary-fixed": "#e2e2e2",
+                      "on-secondary": "#2f3131",
+                      "surface-dim": "#131313",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-primary-container": "#7b7979",
+                      "error-container": "#93000a",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-surface": "#e5e2e1",
+                      "secondary": "#c6c6c7",
+                      "primary-fixed": "#e5e2e1",
+                      "inverse-surface": "#e5e2e1",
+                      "surface-bright": "#3a3939",
+                      "inverse-on-surface": "#313030",
+                      "surface-container-highest": "#353534",
+                      "surface-container": "#201f1f",
+                      "on-tertiary-fixed": "#171e00"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "md": "16px",
+                      "margin-mobile": "16px",
+                      "xxl": "80px",
+                      "xl": "40px",
+                      "unit": "8px",
+                      "margin-desktop": "48px",
+                      "sm": "8px",
+                      "container-max": "1440px",
+                      "lg": "24px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "button": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-xl": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "button": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                      "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                      "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-xl": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- Distraction-Free Header -->
+<header class="fixed top-0 w-full h-20 bg-background/80 backdrop-blur-xl z-50 border-b border-white/5 flex items-center px-margin-desktop">
+<div class="font-display-lg text-headline-lg tracking-tighter text-on-background">APEX LUXE</div>
+</header>
+<main class="pt-xxl min-h-screen flex flex-col lg:flex-row max-w-container-max mx-auto px-margin-mobile lg:px-margin-desktop gap-xxl">
+<!-- Checkout Flow Container -->
+<div class="flex-1 py-xl" id="checkout-flow">
+<!-- Progress Indicator -->
+<nav aria-label="Progress" class="flex items-center gap-md mb-xxl">
+<div class="flex items-center gap-sm group" id="step-1-indicator">
+<span class="w-8 h-8 rounded-full border border-tertiary flex items-center justify-center text-label-caps font-label-caps bg-tertiary text-on-tertiary">01</span>
+<span class="font-label-caps text-label-caps text-on-background">Information</span>
+</div>
+<div class="h-px w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-sm opacity-40 transition-opacity" id="step-2-indicator">
+<span class="w-8 h-8 rounded-full border border-outline flex items-center justify-center text-label-caps font-label-caps">02</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Shipping</span>
+</div>
+<div class="h-px w-8 bg-outline-variant"></div>
+<div class="flex items-center gap-sm opacity-40 transition-opacity" id="step-3-indicator">
+<span class="w-8 h-8 rounded-full border border-outline flex items-center justify-center text-label-caps font-label-caps">03</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Payment</span>
+</div>
+</nav>
+<!-- Step 1: Information -->
+<section class="space-y-xl" id="step-1">
+<div class="space-y-md">
+<h1 class="font-headline-lg text-headline-lg">Express Checkout</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-sm bg-white text-black py-4 rounded-lg font-button text-button hover:bg-white/90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="apple">ios</span>
+                            Pay with Apple
+                        </button>
+<button class="flex items-center justify-center gap-sm bg-[#4285F4] text-white py-4 rounded-lg font-button text-button hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="google">google</span>
+                            G Pay
+                        </button>
+</div>
+</div>
+<div class="flex items-center gap-md py-md">
+<div class="h-px flex-1 bg-outline-variant"></div>
+<span class="font-label-caps text-label-caps text-outline">OR CONTINUE WITH EMAIL</span>
+<div class="h-px flex-1 bg-outline-variant"></div>
+</div>
+<form class="space-y-lg" id="form-step-1">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface-variant">CONTACT INFORMATION</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg transition-all" placeholder="Email Address" required="" type="email"/>
+</div>
+<div class="flex items-center gap-sm">
+<input class="rounded border-outline-variant bg-surface-container-lowest text-tertiary focus:ring-tertiary" id="newsletter" type="checkbox"/>
+<label class="font-body-md text-on-surface-variant" for="newsletter">Email me with news and offers</label>
+</div>
+<button class="w-full py-5 bg-tertiary text-on-tertiary font-button text-button rounded-lg hover:brightness-110 active:scale-[0.98] transition-all" onclick="goToStep(2)" type="button">
+                        CONTINUE TO SHIPPING
+                    </button>
+</form>
+</section>
+<!-- Step 2: Shipping (Hidden by default) -->
+<section class="hidden space-y-xl" id="step-2">
+<h1 class="font-headline-lg text-headline-lg">Shipping Address</h1>
+<form class="space-y-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="First Name" type="text"/>
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Last Name" type="text"/>
+</div>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Address" type="text"/>
+<input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Apartment, suite, etc. (optional)" type="text"/>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="City" type="text"/>
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Country" type="text"/>
+<input class="bg-surface-container-lowest border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Postal Code" type="text"/>
+</div>
+<div class="flex gap-md pt-md">
+<button class="flex-1 py-5 border border-outline-variant text-on-surface font-button text-button rounded-lg hover:bg-surface-container-low transition-all" onclick="goToStep(1)" type="button">
+                            RETURN TO INFO
+                        </button>
+<button class="flex-[2] py-5 bg-tertiary text-on-tertiary font-button text-button rounded-lg hover:brightness-110 transition-all" onclick="goToStep(3)" type="button">
+                            CONTINUE TO PAYMENT
+                        </button>
+</div>
+</form>
+</section>
+<!-- Step 3: Payment (Hidden by default) -->
+<section class="hidden space-y-xl" id="step-3">
+<h1 class="font-headline-lg text-headline-lg">Payment Method</h1>
+<div class="p-lg bg-surface-container-low rounded-xl border border-white/5 space-y-lg">
+<div class="flex justify-between items-center">
+<span class="font-label-caps text-label-caps">CREDIT CARD</span>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined" data-icon="credit_card">credit_card</span>
+</div>
+</div>
+<form class="space-y-md">
+<div class="relative">
+<input class="w-full bg-background border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Card number" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="lock">lock</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<input class="bg-background border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="MM / YY" type="text"/>
+<input class="bg-background border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="CVV" type="text"/>
+</div>
+<input class="w-full bg-background border border-outline-variant focus:border-tertiary focus:ring-1 focus:ring-tertiary outline-none px-md py-4 text-on-surface rounded-lg" placeholder="Name on card" type="text"/>
+</form>
+</div>
+<button class="w-full py-5 bg-tertiary text-on-tertiary font-button text-button rounded-lg hover:brightness-110 active:scale-[0.98] transition-all shadow-[0_20px_40px_rgba(173,213,0,0.1)]" onclick="showSuccess()" type="button">
+                    COMPLETE ORDER
+                </button>
+</section>
+<!-- Success State (Hidden by default) -->
+<section class="hidden flex flex-col items-center justify-center py-xxl text-center space-y-lg animate-in fade-in zoom-in duration-700" id="success-state">
+<div class="w-24 h-24 rounded-full bg-tertiary flex items-center justify-center text-on-tertiary mb-md">
+<span class="material-symbols-outlined !text-5xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-display-lg text-headline-xl">Order Confirmed.</h1>
+<p class="text-body-lg text-on-surface-variant max-w-md">Thank you for your purchase. We've sent a confirmation email to your inbox. Your athletic performance journey starts now.</p>
+<button class="px-xl py-4 border border-white/20 hover:bg-white/5 transition-all font-button text-button rounded-full" onclick="window.location.reload()">
+                    BACK TO SHOP
+                </button>
+</section>
+</div>
+<!-- Sidebar Summary -->
+<aside class="w-full lg:w-[400px] py-xl lg:border-l lg:border-white/5 lg:pl-xl" id="order-sidebar">
+<div class="sticky top-24 space-y-xl">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant mb-lg">ORDER SUMMARY</h2>
+<div class="space-y-lg">
+<!-- Item 1 -->
+<div class="flex gap-md group">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up shot of a premium black athletic sneaker with neon lime accents, set against a dark moody studio background with cinematic rim lighting emphasizing its technical silhouette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwfJpyXqeywjjXAru1WHzOajx6O3P0td7sP1AYEN5vilSRnOyoycR3sfeDXx22IRwrrpa87QJATUgv2ycwui4uSRfBr8F5NwuB13Vp119tijuw8ayRx_PKSEHmkb6HE9bB-0xYJkIYCmb04qKSKsYQHfIG60U_5rMMZ9FsMb5BVKvQfLOP-7NkYXpLI98BF2VC3hht_neyxWd2JpJPJxNQ-s7TOeWKUIvjIUx5iWYd9awT4fxxba_YAuUA-gdqLKOCbMJB4NyVmKJv"/>
+<span class="absolute -top-2 -right-2 w-6 h-6 bg-tertiary text-on-tertiary text-[10px] font-bold rounded-full flex items-center justify-center">1</span>
+</div>
+<div class="flex-1 py-1">
+<h3 class="font-button text-button text-on-background">APEX ELITE V1</h3>
+<p class="text-xs text-on-surface-variant">Carbon Black / Volt</p>
+</div>
+<div class="py-1 font-label-caps text-label-caps">$220.00</div>
+</div>
+<!-- Item 2 -->
+<div class="flex gap-md group">
+<div class="w-20 h-24 bg-surface-container rounded-lg overflow-hidden relative shrink-0">
+<img class="w-full h-full object-cover" data-alt="Sophisticated male lifestyle product photography featuring a sleek technical compression top neatly folded on a dark reflective surface with sharp shadows and minimalistic luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh00YYrTWtEnRTJUQ_TsPQFscp_Jw9JllmEHYKY2Zovl-I1orHqUV3TWyxhgSrCn28_-v0eG02TXqVqRHIqtXYvlgx34cxvB3HpeR8_Ckjf6RohTrhf66WtyO2dLdzJKnumQqgLcIgiIqyvjugFthO4XL6DrzkxiJJmGXZjC9AWGSl0ZorIeLbpcsYjKtcV8UFlLDiXvkxBm-kvx2VjS4XChBciL_tdx_77LMRC2l7gKcMUod-_-u6UDXm3Lda1T6qOLW2Y_KbnF64"/>
+<span class="absolute -top-2 -right-2 w-6 h-6 bg-tertiary text-on-tertiary text-[10px] font-bold rounded-full flex items-center justify-center">1</span>
+</div>
+<div class="flex-1 py-1">
+<h3 class="font-button text-button text-on-background">PRO-TECH TOP</h3>
+<p class="text-xs text-on-surface-variant">Phantom Grey</p>
+</div>
+<div class="py-1 font-label-caps text-label-caps">$85.00</div>
+</div>
+</div>
+<div class="pt-lg border-t border-white/5 space-y-md">
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Subtotal</span>
+<span>$305.00</span>
+</div>
+<div class="flex justify-between font-body-md text-on-surface-variant">
+<span>Shipping</span>
+<span class="text-tertiary">Free</span>
+</div>
+<div class="flex justify-between font-headline-lg text-headline-lg pt-md">
+<span>Total</span>
+<div class="flex flex-col items-end">
+<span class="text-xs font-label-caps text-outline mb-1">USD</span>
+<span>$305.00</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-lg border border-white/5 mt-xl">
+<div class="flex gap-sm items-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="verified">verified</span>
+<p class="text-xs text-on-surface-variant">Your order is protected by 256-bit SSL encryption for a secure premium experience.</p>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<footer class="w-full py-xl mt-xxl border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-margin-desktop bg-black">
+<span class="font-label-caps text-label-caps text-outline">© 2024 APEX LUXE. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-xl mt-md md:mt-0">
+<a class="font-label-caps text-label-caps text-outline hover:text-white transition-colors" href="#">PRIVACY</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-white transition-colors" href="#">TERMS</a>
+<a class="font-label-caps text-label-caps text-outline hover:text-white transition-colors" href="#">SUPPORT</a>
+</div>
+</footer>
+<script>
+        function goToStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('#checkout-flow > section').forEach(el => el.classList.add('hidden'));
+            
+            // Show current step
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+            
+            // Update Indicators
+            for (let i = 1; i <= 3; i++) {
+                const indicator = document.getElementById(`step-${i}-indicator`);
+                const circle = indicator.querySelector('span:first-child');
+                const label = indicator.querySelector('span:last-child');
+                
+                if (i < stepNumber) {
+                    // Completed state
+                    indicator.classList.remove('opacity-40');
+                    circle.innerHTML = '<span class="material-symbols-outlined !text-base" data-icon="check">check</span>';
+                    circle.classList.add('bg-tertiary', 'text-on-tertiary', 'border-tertiary');
+                    label.classList.add('text-on-background');
+                } else if (i === stepNumber) {
+                    // Active state
+                    indicator.classList.remove('opacity-40');
+                    circle.innerHTML = `0${i}`;
+                    circle.classList.add('bg-tertiary', 'text-on-tertiary', 'border-tertiary');
+                    label.classList.add('text-on-background');
+                } else {
+                    // Pending state
+                    indicator.classList.add('opacity-40');
+                    circle.innerHTML = `0${i}`;
+                    circle.classList.remove('bg-tertiary', 'text-on-tertiary', 'border-tertiary');
+                    circle.classList.add('border-outline');
+                    label.classList.remove('text-on-background');
+                    label.classList.add('text-on-surface-variant');
+                }
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showSuccess() {
+            // Hide sidebar and current flow
+            document.getElementById('checkout-flow').querySelectorAll('section, nav').forEach(el => el.classList.add('hidden'));
+            document.getElementById('order-sidebar').classList.add('hidden');
+            
+            // Show success
+            document.getElementById('success-state').classList.remove('hidden');
+            
+            // Change flow container to full width
+            document.getElementById('checkout-flow').classList.remove('flex-1');
+            document.getElementById('checkout-flow').classList.add('w-full');
+        }
+    </script>
+</body></html>

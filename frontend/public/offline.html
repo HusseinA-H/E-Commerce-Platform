@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX LUXE — You're Offline</title>
+  <link rel="manifest" href="/manifest.json" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0b0b0b;
+      color: #f4f4f0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .container { max-width: 400px; }
+    .logo {
+      font-size: 22px;
+      letter-spacing: 6px;
+      font-weight: 300;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .accent {
+      width: 40px;
+      height: 2px;
+      background: #d4ff3f;
+      margin: 0 auto 40px;
+    }
+    .icon {
+      font-size: 48px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    button {
+      background: #d4ff3f;
+      color: #0b0b0b;
+      border: none;
+      padding: 14px 32px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    button:hover { background: #c8f03a; }
+    .cached-note {
+      margin-top: 24px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">APEX LUXE</div>
+    <div class="accent"></div>
+    <div class="icon">📡</div>
+    <h1>You're Offline</h1>
+    <p>It seems you've lost your connection. Check your internet settings and try again. Your cart and wishlist are safely stored.</p>
+    <button onclick="location.reload()">Retry Connection</button>
+    <p class="cached-note">Some cached pages may still be accessible below.</p>
+  </div>
+</body>
+</html>

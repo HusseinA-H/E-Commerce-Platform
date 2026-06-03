@@ -1,0 +1,99 @@
+# =============================================================================
+# APEX LUXE — Local Development Infrastructure
+# =============================================================================
+# Usage:
+#   docker compose up -d            # Start all services in background
+#   docker compose down             # Stop and remove containers
+#   docker compose down -v          # Stop and remove containers + volumes (full reset)
+#   docker compose logs -f redis    # Follow Redis logs
+#   docker compose logs -f mssql    # Follow SQL Server logs
+#
+# IMPORTANT: On first boot, run the DB init script after containers are healthy:
+#   docker exec apex_luxe_mssql /opt/mssql-tools18/bin/sqlcmd \
+#     -S localhost -U SA -P "ApexLuxe@2024!" -C \
+#     -Q "IF NOT EXISTS (SELECT name FROM sys.databases WHERE name='apexluxe') CREATE DATABASE apexluxe;"
+# =============================================================================
+
+version: '3.9'
+
+services:
+  # ---------------------------------------------------------------------------
+  # SQL Server 2022 (Microsoft)
+  # NOTE: sqlcmd moved to /opt/mssql-tools18/bin/ in SQL Server 2022 image
+  # NOTE: Use -C flag to trust server certificate (required in 2022 image)
+  # ---------------------------------------------------------------------------
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: apex_luxe_mssql
+    restart: unless-stopped
+    environment:
+      ACCEPT_EULA: "Y"
+      # Hard-coded default — override by setting DB_SA_PASSWORD in your shell env or .env
+      MSSQL_SA_PASSWORD: "${DB_SA_PASSWORD:-ApexLuxe@2024!}"
+      MSSQL_PID: "Developer"  # Developer edition is free for dev use; has no row limits
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      # SQL Server 2022 image ships sqlcmd at /opt/mssql-tools18/bin/sqlcmd
+      # The -C flag trusts the self-signed TLS cert (required since SQL Server 2022)
+      test:
+        - "CMD-SHELL"
+        - >
+          /opt/mssql-tools18/bin/sqlcmd
+          -S localhost
+          -U SA
+          -P "$$MSSQL_SA_PASSWORD"
+          -C
+          -Q "SELECT 1"
+          > /dev/null 2>&1
+          || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 45s  # SQL Server 2022 takes 30–45s on first boot
+
+  # ---------------------------------------------------------------------------
+  # Redis 7
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: apex_luxe_redis
+    restart: unless-stopped
+    command: >
+      redis-server
+      --appendonly yes
+      --appendfsync everysec
+      --save 60 1
+      --loglevel notice
+      ${REDIS_PASSWORD:+--requirepass ${REDIS_PASSWORD}}
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      # If REDIS_PASSWORD is set, auth is required for the ping check
+      test:
+        - "CMD-SHELL"
+        - >
+          redis-cli
+          ${REDIS_PASSWORD:+-a ${REDIS_PASSWORD}}
+          --no-auth-warning
+          ping
+          | grep -q PONG
+          || exit 1
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+# -----------------------------------------------------------------------------
+# Named volumes for data persistence across restarts
+# -----------------------------------------------------------------------------
+volumes:
+  mssql_data:
+    driver: local
+    name: apex_luxe_mssql_data
+  redis_data:
+    driver: local
+    name: apex_luxe_redis_data

@@ -1,0 +1,41 @@
+# Stage 1: Build NestJS backend
+FROM node:20-alpine AS builder
+
+WORKDIR /usr/src/app
+
+# Install build dependencies if any native bindings exist
+RUN apk add --no-cache python3 make g++
+
+COPY package*.json ./
+COPY prisma ./prisma/
+
+# Install all dependencies (including devDependencies) to run the build
+RUN npm ci
+
+COPY . .
+
+# Generate Prisma Client
+RUN npx prisma generate
+
+# Build the NestJS application
+RUN npm run build
+
+# Clean up dev dependencies to minimize image size
+RUN npm prune --production
+
+# Stage 2: Production environment runner
+FROM node:20-alpine AS runner
+
+WORKDIR /usr/src/app
+
+ENV NODE_ENV=production
+
+# Copy built app and node_modules from builder
+COPY --from=builder /usr/src/app/package*.json ./
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/dist ./dist
+COPY --from=builder /usr/src/app/prisma ./prisma
+
+EXPOSE 5000
+
+CMD ["node", "dist/main.js"]
