@@ -254,9 +254,8 @@ The frontend will be accessible at `http://localhost:3000` (or subdomain context
 
 **Hussein Ahmed**
 * **GitHub**: [@HusseinA-H](https://github.com/HusseinA-H)
-* **LinkedIn**: [Hussein Ahmed](https://linkedin.com)
-* **Email**: contact@husseinahmed.me
-
+* **LinkedIn**: [Hussein Ahmed]([https://www.linkedin.com/in/hussein-ahmed-dev/)
+* **Email**: aha.hussein3@gmail.com
 ---
 
 ## 📄 License
